@@ -374,12 +374,22 @@
     .calc-preview {
       font-size: 0.82rem;
       font-weight: 700;
-      color: var(--brand-red);
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      padding: 5px 10px;
+      color: var(--primary);
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 6px 10px;
       border-radius: 6px;
       margin-top: 2px;
+    }
+    .calc-preview.is-discount {
+      color: var(--brand-red);
+      background: #fef2f2;
+      border-color: #fecaca;
+    }
+    .calc-preview.is-markup {
+      color: var(--primary);
+      background: #fef9ec;
+      border-color: #fde68a;
     }
     .admin-img-list { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
     .admin-img-item { position: relative; width: 75px; height: 75px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
@@ -612,13 +622,13 @@
           <input type="text" id="pBadge" placeholder="مثال: عرض لفترة محدودة أو عرض خاص">
         </div>
         <div class="form-group">
-          <label>السعر الأساسي (ج.م) *</label>
+          <label>سعر الليستة / الأساسي (ج.م) *</label>
           <input type="number" step="0.01" id="pPrice" required oninput="updateDiscountPreview()">
         </div>
         <div class="form-group">
-          <label>نسبة الخصم (%) — اختياري</label>
-          <input type="number" step="0.01" min="0" max="99.99" id="pDiscountPct" placeholder="مثال: 15 (تُحسب تلقائيًا)" oninput="updateDiscountPreview()">
-          <div id="discountPreview" class="calc-preview">السعر بعد الخصم: لا يوجد خصم</div>
+          <label>نسبة الخصم (%) — أو اكتب سالب مثل -20 لزيادة السعر</label>
+          <input type="number" step="0.01" min="-500" max="99.99" id="pDiscountPct" placeholder="مثال: 15 للخصم أو -20 للزيادة" oninput="updateDiscountPreview()">
+          <div id="discountPreview" class="calc-preview">السعر النهائي: نفس سعر الليستة</div>
         </div>
         <div class="form-group full">
           <label>وصف ومواصفات المنتج</label>
@@ -655,8 +665,8 @@
           <tr>
             <th>الكود</th>
             <th>المنتج</th>
-            <th>السعر</th>
-            <th>بعد الخصم</th>
+            <th>الليستة</th>
+            <th>السعر الفعلي</th>
             <th>الحالة</th>
             <th>إجراءات</th>
           </tr>
@@ -706,28 +716,62 @@
   }
 
   function formatMoney(num) {
-    const rounded = Math.round(Number(num) * 100) / 100;
+    const val = Number(num);
+    if (isNaN(val)) return "0";
+    const rounded = Math.round(val * 100) / 100;
     return Number.isInteger(rounded) ? rounded.toString() : rounded.toFixed(2);
   }
 
+  // يدعم الخصم الموجب (مثلاً 15 -> خصم 15%) والزيادة السالبة (مثلاً -20 -> زيادة 20% فوق الليستة)
   function computeDiscountPrice(price, pct) {
     const p = parseFloat(price);
-    const d = parseFloat(pct);
-    if (isNaN(p) || p <= 0 || isNaN(d) || d <= 0 || d >= 100) return "";
-    const discounted = p * (1 - d / 100);
-    return Math.round(discounted * 100) / 100;
+    const rawPct = pct === "" || pct === null || pct === undefined ? NaN : parseFloat(pct);
+    if (isNaN(p) || p <= 0 || isNaN(rawPct) || rawPct === 0 || rawPct >= 100) return "";
+    const finalVal = p * (1 - rawPct / 100);
+    if (isNaN(finalVal) || finalVal <= 0) return "";
+    return Math.round(finalVal * 100) / 100;
+  }
+
+  function getPriceDisplayInfo(p) {
+    const basePrice = Number(p.price) || 0;
+    const hasCustomPrice = p.discountPrice !== null && p.discountPrice !== "" && !isNaN(Number(p.discountPrice)) && Number(p.discountPrice) > 0;
+    const finalPrice = hasCustomPrice ? Number(p.discountPrice) : basePrice;
+    const isDiscounted = hasCustomPrice && finalPrice < basePrice && basePrice > 0;
+    const isMarkedUp = hasCustomPrice && finalPrice > basePrice && basePrice > 0;
+    const autoPct = isDiscounted ? Math.round((1 - finalPrice / basePrice) * 10000) / 100 : 0;
+
+    return {
+      basePrice,
+      finalPrice,
+      isDiscounted,
+      isMarkedUp,
+      hasOffer: isDiscounted || Boolean(p.offerBadge),
+      badgeText: p.offerBadge || (isDiscounted ? `خصم ${formatMoney(autoPct)}%` : "")
+    };
   }
 
   function updateDiscountPreview() {
     const priceVal = document.getElementById("pPrice").value;
     const pctVal = document.getElementById("pDiscountPct").value;
     const previewEl = document.getElementById("discountPreview");
+    const baseP = parseFloat(priceVal);
+    const pctNum = parseFloat(pctVal);
     const calc = computeDiscountPrice(priceVal, pctVal);
 
-    if (calc !== "") {
-      previewEl.innerText = `السعر بعد الخصم (${pctVal}%): ${formatMoney(calc)} ج.م`;
+    previewEl.classList.remove("is-discount", "is-markup");
+
+    if (calc !== "" && !isNaN(baseP) && baseP > 0) {
+      if (calc < baseP) {
+        previewEl.classList.add("is-discount");
+        previewEl.innerText = `السعر بعد الخصم (${formatMoney(pctNum)}%): ${formatMoney(calc)} ج.م`;
+      } else {
+        previewEl.classList.add("is-markup");
+        previewEl.innerText = `السعر بعد الزيادة (${formatMoney(Math.abs(pctNum))}%): ${formatMoney(calc)} ج.م`;
+      }
+    } else if (!isNaN(baseP) && baseP > 0) {
+      previewEl.innerText = `السعر النهائي: ${formatMoney(baseP)} ج.م`;
     } else {
-      previewEl.innerText = "السعر بعد الخصم: لا يوجد خصم";
+      previewEl.innerText = "السعر النهائي: نفس سعر الليستة";
     }
   }
 
@@ -777,8 +821,8 @@
     const filtered = allProducts.filter(p => {
       if (!p.active) return false;
       if (cat !== "ALL" && p.category !== cat) return false;
-      const hasOffer = (p.discountPrice !== null && p.discountPrice > 0 && p.discountPrice < p.price) || p.offerBadge;
-      if (onlyOffers && !hasOffer) return false;
+      const info = getPriceDisplayInfo(p);
+      if (onlyOffers && !info.hasOffer) return false;
       if (q) {
         const hay = `${p.name} ${p.sku} ${p.description} ${p.category}`.toLowerCase();
         if (!hay.includes(q)) return false;
@@ -793,15 +837,12 @@
 
     grid.innerHTML = filtered.map(p => {
       const mainImg = p.images.length ? p.images[0] : PLACEHOLDER_IMG;
-      const hasDiscount = p.discountPrice !== null && p.discountPrice > 0 && p.discountPrice < p.price;
-      const finalPrice = hasDiscount ? p.discountPrice : p.price;
-      const autoPct = hasDiscount ? Math.round((1 - p.discountPrice / p.price) * 10000) / 100 : 0;
-      const badgeText = p.offerBadge || (hasDiscount ? `خصم ${formatMoney(autoPct)}%` : "");
-      const waMsg = encodeURIComponent(`مرحباً (${STORE_NAME})، أريد الاستفسار/الطلب:\nالمنتج: ${p.name}\nالكود: ${p.sku || "غير محدد"}\nالسعر: ${formatMoney(finalPrice)} ج.م`);
+      const info = getPriceDisplayInfo(p);
+      const waMsg = encodeURIComponent(`مرحباً (${STORE_NAME})، أريد الاستفسار/الطلب:\nالمنتج: ${p.name}\nالكود: ${p.sku || "غير محدد"}\nالسعر: ${formatMoney(info.finalPrice)} ج.م`);
 
       return `
         <div class="card">
-          ${badgeText ? `<div class="badge">${badgeText}</div>` : ""}
+          ${info.badgeText ? `<div class="badge">${info.badgeText}</div>` : ""}
           <div class="card-img-wrap" onclick="openDetails('${p.id}')">
             <img src="${mainImg}" alt="${p.name}" loading="lazy">
             ${p.images.length > 1 ? `<div class="img-count">📷 ${p.images.length} صور</div>` : ""}
@@ -811,8 +852,8 @@
             <h3 class="card-title" onclick="openDetails('${p.id}')">${p.name}</h3>
             <p class="card-desc">${p.description || ""}</p>
             <div class="price-row">
-              <span class="price-now">${formatMoney(finalPrice)} ج.م</span>
-              ${hasDiscount ? `<span class="price-old">${formatMoney(p.price)} ج.م</span>` : ""}
+              <span class="price-now">${formatMoney(info.finalPrice)} ج.م</span>
+              ${info.isDiscounted ? `<span class="price-old">${formatMoney(info.basePrice)} ج.م</span>` : ""}
             </div>
             <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}" target="_blank" class="btn btn-wa">اطلب عبر واتساب</a>
           </div>
@@ -839,14 +880,13 @@
       <img src="${url}" class="${idx === 0 ? 'active' : ''}" onclick="switchGalleryImg(this, '${url}')">
     `).join("") : "";
 
-    const hasDiscount = p.discountPrice !== null && p.discountPrice > 0 && p.discountPrice < p.price;
-    const finalPrice = hasDiscount ? p.discountPrice : p.price;
+    const info = getPriceDisplayInfo(p);
     document.getElementById("detPriceBox").innerHTML = `
-      <span class="price-now">${formatMoney(finalPrice)} ج.م</span>
-      ${hasDiscount ? `<span class="price-old">${formatMoney(p.price)} ج.م</span>` : ""}
+      <span class="price-now">${formatMoney(info.finalPrice)} ج.م</span>
+      ${info.isDiscounted ? `<span class="price-old">${formatMoney(info.basePrice)} ج.م</span>` : ""}
     `;
 
-    const waMsg = encodeURIComponent(`مرحباً (${STORE_NAME})، أريد طلب:\nالمنتج: ${p.name}\nالكود: ${p.sku || "غير محدد"}\nالسعر: ${formatMoney(finalPrice)} ج.م`);
+    const waMsg = encodeURIComponent(`مرحباً (${STORE_NAME})، أريد طلب:\nالمنتج: ${p.name}\nالكود: ${p.sku || "غير محدد"}\nالسعر: ${formatMoney(info.finalPrice)} ج.م`);
     document.getElementById("detWaBtn").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}`;
 
     document.getElementById("detailsModal").classList.add("open");
@@ -1011,8 +1051,10 @@
     document.getElementById("pBadge").value = p.offerBadge;
     document.getElementById("pPrice").value = p.price;
 
-    if (p.discountPrice !== null && p.discountPrice > 0 && p.price > 0 && p.discountPrice < p.price) {
-      const pct = Math.round((1 - p.discountPrice / p.price) * 10000) / 100;
+    const basePrice = Number(p.price) || 0;
+    const discPrice = p.discountPrice !== null && p.discountPrice !== "" ? Number(p.discountPrice) : NaN;
+    if (!isNaN(discPrice) && discPrice > 0 && basePrice > 0 && discPrice !== basePrice) {
+      const pct = Math.round((1 - discPrice / basePrice) * 10000) / 100;
       document.getElementById("pDiscountPct").value = pct;
     } else {
       document.getElementById("pDiscountPct").value = "";
@@ -1063,19 +1105,22 @@
       return;
     }
 
-    tbody.innerHTML = filtered.map(p => `
-      <tr>
-        <td><code>${p.sku || "-"}</code></td>
-        <td>${p.name}</td>
-        <td>${formatMoney(p.price)}</td>
-        <td>${p.discountPrice !== null && p.discountPrice > 0 ? formatMoney(p.discountPrice) : "-"}</td>
-        <td>${p.active ? "ظاهر" : "مخفي"}</td>
-        <td style="white-space:nowrap;">
-          <button class="btn btn-outline" style="padding:4px 8px;" onclick="editProduct('${p.id}')">تعديل</button>
-          <button class="btn btn-danger" style="padding:4px 8px;" onclick="deleteProduct('${p.id}')">حذف</button>
-        </td>
-      </tr>
-    `).join("");
+    tbody.innerHTML = filtered.map(p => {
+      const info = getPriceDisplayInfo(p);
+      return `
+        <tr>
+          <td><code>${p.sku || "-"}</code></td>
+          <td>${p.name}</td>
+          <td>${formatMoney(info.basePrice)}</td>
+          <td>${info.finalPrice !== info.basePrice ? formatMoney(info.finalPrice) : "-"}</td>
+          <td>${p.active ? "ظاهر" : "مخفي"}</td>
+          <td style="white-space:nowrap;">
+            <button class="btn btn-outline" style="padding:4px 8px;" onclick="editProduct('${p.id}')">تعديل</button>
+            <button class="btn btn-danger" style="padding:4px 8px;" onclick="deleteProduct('${p.id}')">حذف</button>
+          </td>
+        </tr>
+      `;
+    }).join("");
   }
 </script>
 </body>
