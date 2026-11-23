@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Qotb Electric Store — معرض المنتجات والأسعار</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #13294B;
@@ -20,7 +20,7 @@
     }
 
     * { box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-    body { margin: 0; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    body { margin: 0; background: var(--bg); color: var(--text); overflow-x: hidden; padding-bottom: 58px; }
 
     /* Header */
     header {
@@ -41,6 +41,12 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
     }
     .brand { display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1 1 auto; }
     .brand-logo {
@@ -92,12 +98,22 @@
       border-bottom: 2px solid var(--accent);
     }
     .btn-brand:hover { background: var(--primary-light); }
+    .btn-info-card {
+      background: #fff;
+      color: var(--primary);
+      border: 1px solid var(--accent);
+    }
+    .btn-info-card:hover { background: #fef9ec; }
     .btn-primary { background: var(--primary); color: #fff; }
     .btn-primary:hover { background: var(--primary-light); }
     .btn-danger { background: var(--danger); color: #fff; }
     .btn-outline { background: #fff; border: 1px solid var(--border); color: var(--text); }
     .btn-wa { background: #25D366; color: #fff; width: 100%; justify-content: center; font-size: 0.95rem; }
     .btn-wa:hover { background: #1ebe5d; }
+    .btn-call { background: var(--primary); color: #fff; }
+    .btn-call:hover { background: var(--primary-light); }
+    .btn-map { background: var(--brand-red); color: #fff; }
+    .btn-map:hover { filter: brightness(1.06); }
 
     /* Container & Filters */
     .container { max-width: 1200px; margin: 20px auto; padding: 0 16px; }
@@ -225,6 +241,99 @@
     .price-now { font-size: 1.25rem; font-weight: 800; color: var(--brand-red); }
     .price-old { font-size: 0.9rem; color: var(--muted); text-decoration: line-through; }
 
+    /* Company Card & Footer */
+    .company-card-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 14px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .company-block h4 {
+      margin: 0 0 6px;
+      color: var(--primary);
+      font-size: 0.98rem;
+      font-weight: 800;
+    }
+    .company-block p {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .contact-person { font-size: 0.86rem; font-weight: 700; color: var(--primary); }
+    .contact-num { font-family: monospace; font-size: 0.88rem; font-weight: 700; color: var(--brand-red); direction: ltr; }
+    .contact-actions { display: flex; gap: 6px; }
+    .btn-mini { padding: 5px 10px; font-size: 0.78rem; border-radius: 6px; }
+    .brands-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .brand-chip {
+      background: #f1f5f9;
+      color: var(--primary);
+      border: 1px solid #cbd5e1;
+      padding: 3px 9px;
+      border-radius: 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    footer.site-footer {
+      max-width: 1200px;
+      margin: 28px auto 12px;
+      padding: 0 16px;
+    }
+
+    /* Floating Signature Watermark */
+    .dev-watermark {
+      position: fixed;
+      bottom: 14px;
+      left: 14px;
+      z-index: 150;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(212, 168, 67, 0.65);
+      box-shadow: 0 4px 14px rgba(19, 41, 75, 0.12);
+      padding: 5px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.85;
+      transition: 0.2s;
+    }
+    .dev-watermark:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+      border-color: var(--brand-red);
+    }
+    .sig-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.45rem;
+      line-height: 1;
+      color: var(--brand-red);
+      letter-spacing: 0.5px;
+    }
+
     /* Modals */
     .modal-backdrop {
       position: fixed;
@@ -324,6 +433,8 @@
       .modal { padding: 15px; border-radius: 12px; max-height: 92vh; }
       .gallery-main { height: 220px; }
       .form-grid { grid-template-columns: 1fr; }
+      .dev-watermark { bottom: 10px; left: 10px; padding: 4px 11px; }
+      .sig-script { font-size: 1.25rem; }
     }
   </style>
 </head>
@@ -338,7 +449,10 @@
         <span class="brand-sub">معرض المنتجات والأسعار والعروض</span>
       </div>
     </div>
-    <button class="btn btn-brand" onclick="openAdminGate()">⚙️ إدارة المنتجات</button>
+    <div class="header-actions">
+      <button class="btn btn-info-card" onclick="openModal('companyModal')">📍 بيانات الشركة</button>
+      <button class="btn btn-brand" onclick="openAdminGate()">⚙️ إدارة المنتجات</button>
+    </div>
   </div>
 </header>
 
@@ -358,6 +472,96 @@
 
   <div id="loader" class="loader">جاري تحميل المنتجات...</div>
   <div id="productsGrid" class="grid"></div>
+</div>
+
+<!-- بيانات الشركة في أسفل الصفحة -->
+<footer class="site-footer">
+  <div class="company-card-box">
+    <div class="company-block">
+      <h4>قطب إلكتريك استور — Qotb Electric Store</h4>
+      <p>للتوريدات العمومية ومستلزمات المصانع<br><span style="font-size:0.8rem;">For General Supplies &amp; Factory Requirements</span></p>
+      <div class="brands-strip">
+        <span class="brand-chip">BTicino</span>
+        <span class="brand-chip">Legrand</span>
+        <span class="brand-chip">Schneider Electric</span>
+        <span class="brand-chip">ABB</span>
+        <span class="brand-chip">Philips</span>
+        <span class="brand-chip">Elsewedy Electric</span>
+      </div>
+    </div>
+
+    <div class="company-block">
+      <h4>أرقام التواصل (اتصال وواتساب)</h4>
+      <div class="contact-row">
+        <div>
+          <div class="contact-person">أ. قطب</div>
+          <div class="contact-num">01146653076</div>
+        </div>
+        <div class="contact-actions">
+          <a href="tel:01146653076" class="btn btn-call btn-mini">📞 اتصال</a>
+          <a href="https://wa.me/201146653076" target="_blank" class="btn btn-wa btn-mini" style="width:auto;">💬 واتساب</a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div>
+          <div class="contact-person">أحمد خيري</div>
+          <div class="contact-num">01107075772</div>
+        </div>
+        <div class="contact-actions">
+          <a href="tel:01107075772" class="btn btn-call btn-mini">📞 اتصال</a>
+          <a href="https://wa.me/201107075772" target="_blank" class="btn btn-wa btn-mini" style="width:auto;">💬 واتساب</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="company-block">
+      <h4>العنوان واللوكيشن</h4>
+      <p>6 أكتوبر - ليلة القدر - مول السويدي<br><span style="font-size:0.8rem;">6th of October - Laylat El Qader - El Sewedy Mall</span></p>
+      <a id="footerMapLink" href="https://www.google.com/maps/search/?api=1&query=6+of+October+Laylat+El+Qader+El+Sewedy+Mall" target="_blank" class="btn btn-map" style="width:100%; justify-content:center;">📍 فتح اللوكيشن على خرائط جوجل</a>
+    </div>
+  </div>
+</footer>
+
+<!-- علامة مائية بتوقيع المطور -->
+<a id="devWatermarkLink" href="#" target="_blank" class="dev-watermark" title="تواصل مع المصمم لعمل موقع مشابه">
+  <span class="sig-script">Mohammed Elkotb</span>
+</a>
+
+<!-- نافذة بطاقة بيانات الشركة -->
+<div class="modal-backdrop" id="companyModal">
+  <div class="modal" style="max-width: 680px;">
+    <div class="modal-header">
+      <h3 style="margin:0;">قطب إلكتريك استور — بيانات التواصل والعنوان</h3>
+      <button class="close-btn" onclick="closeModal('companyModal')">✕</button>
+    </div>
+    <p style="margin-top:0; color:var(--muted); font-size:0.9rem;">للتوريدات العمومية ومستلزمات المصانع — 6 أكتوبر - ليلة القدر - مول السويدي</p>
+
+    <div class="contact-row">
+      <div>
+        <div class="contact-person">أ. قطب</div>
+        <div class="contact-num">01146653076</div>
+      </div>
+      <div class="contact-actions">
+        <a href="tel:01146653076" class="btn btn-call btn-mini">📞 اتصال</a>
+        <a href="https://wa.me/201146653076" target="_blank" class="btn btn-wa btn-mini" style="width:auto;">💬 واتساب</a>
+      </div>
+    </div>
+
+    <div class="contact-row">
+      <div>
+        <div class="contact-person">أحمد خيري</div>
+        <div class="contact-num">01107075772</div>
+      </div>
+      <div class="contact-actions">
+        <a href="tel:01107075772" class="btn btn-call btn-mini">📞 اتصال</a>
+        <a href="https://wa.me/201107075772" target="_blank" class="btn btn-wa btn-mini" style="width:auto;">💬 واتساب</a>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <a id="modalMapLink" href="https://www.google.com/maps/search/?api=1&query=6+of+October+Laylat+El+Qader+El+Sewedy+Mall" target="_blank" class="btn btn-map" style="width:100%; justify-content:center;">📍 فتح اللوكيشن على خرائط جوجل</a>
+    </div>
+  </div>
 </div>
 
 <!-- نافذة تفاصيل المنتج -->
@@ -466,9 +670,12 @@
 <script>
   // ================= إعدادات الربط والهوية =================
   const API_URL = "https://script.google.com/macros/s/AKfycbwAyhCJ3wQ3HHMgrxTzgNYyB68sl_OLQICH0vzVcDJ-8um9GgdG43DizH8JasoDPOXr/exec";
-  const WHATSAPP_NUMBER = "201146653076";
+  const WHATSAPP_NUMBER = "201062643680";
   const STORE_NAME = "Qotb Electric Store";
   const LOGO_URL = "https://lh3.googleusercontent.com/d/1D205o4w_C29gH182dm_SjCfUoBVEHWPJ";
+  const LOCATION_URL = "https://www.google.com/maps/search/?api=1&query=6+of+October+Laylat+El+Qader+El+Sewedy+Mall";
+  const DEV_WA_NUMBER = "201060816919";
+  const DEV_WA_MSG = encodeURIComponent("السلام عليكم م/ محمد، بصراحة عجبني جدًا تصميم موقع كتالوج Qotb Electric Store وشغله المرتب، وحابب أستفسر عن عمل موقع إلكتروني مشابه لنشاطي.");
   // ==========================================================
 
   let allProducts = [];
@@ -492,6 +699,10 @@
     } else {
       logoEl.style.display = "none";
     }
+    const mapHref = LOCATION_URL.trim();
+    document.getElementById("footerMapLink").href = mapHref;
+    document.getElementById("modalMapLink").href = mapHref;
+    document.getElementById("devWatermarkLink").href = `https://wa.me/${DEV_WA_NUMBER}?text=${DEV_WA_MSG}`;
   }
 
   function formatMoney(num) {
@@ -645,6 +856,10 @@
     document.getElementById("detMainImg").src = url;
     document.querySelectorAll("#detThumbs img").forEach(i => i.classList.remove("active"));
     thumb.classList.add("active");
+  }
+
+  function openModal(id) {
+    document.getElementById(id).classList.add("open");
   }
 
   function closeModal(id) {
