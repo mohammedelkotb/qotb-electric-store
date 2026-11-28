@@ -1650,7 +1650,7 @@
         <div id="flashProductsChecklist" class="flash-checklist-box"></div>
 
         <div class="saved-campaigns-box">
-          <div style="font-size:0.86rem; font-weight:800; color:var(--primary); margin-bottom:8px;">قائمة الفلاشات في الإدارة (كل فلاش مستقل بعدد منتجاته وحالته — علّم «يظهر للمستخدم» ليُضم لشريط العميل):</div>
+          <div style="font-size:0.86rem; font-weight:800; color:var(--primary); margin-bottom:8px;">قائمة الفلاشات في الإدارة (أي تشغيل أو إيقاف أو حذف يحدّث الشيت مباشرة ليسمّع في كل الأجهزة):</div>
           <div id="flashCampaignsList"></div>
         </div>
 
@@ -1794,45 +1794,29 @@
     return `${cleanName}||${cleanEnd || "UNTIL_STOCK"}`;
   }
 
-  // يحدد هل المنتج داخل حملة فلاش سيل ظاهرة للعميل وشغالة، ويرجع بيانات الحملة الخاصة بالمنتج
+  // قراءة حالة الفلاش الفعّال للمنتج مباشرة من بيانات الشيت المحمّلة
   function getProductActiveCampaign(productId) {
     const prod = allProducts.find(x => x.id === productId);
-    if (!prod || !prod.active) return null;
+    if (!prod || !prod.active || !prod.flashSale) return null;
 
+    const meta = parseFlashMetaTag(prod.flashEnd);
+    const endStr = (meta.end || "").trim();
     const now = Date.now();
-    const matchedCampaign = flashCampaigns.find(c => {
-      if (c.showToCustomer === false || c.isRunning === false) return false;
-      const ids = Array.isArray(c.productIds) ? c.productIds : [];
-      if (!ids.includes(productId)) return false;
-      if (c.durationType === "custom" && c.flashEnd && c.flashEnd !== "UNTIL_STOCK" && c.flashEnd !== "PERMANENT") {
-        const ms = Date.parse(c.flashEnd);
-        if (!isNaN(ms) && now >= ms) return false;
-      }
-      return true;
-    });
 
-    if (matchedCampaign) {
-      return {
-        pct: parseDecimal(matchedCampaign.discountPct) || 0,
-        flashEnd: matchedCampaign.flashEnd || "UNTIL_STOCK",
-        name: matchedCampaign.name || "فلاش سيل"
-      };
+    if (
+      endStr &&
+      endStr.toUpperCase() !== "UNTIL_STOCK" &&
+      endStr.toUpperCase() !== "PERMANENT"
+    ) {
+      const ms = Date.parse(endStr);
+      if (!isNaN(ms) && now >= ms) return null;
     }
 
-    if (!flashCampaigns.length && prod.flashSale) {
-      const meta = parseFlashMetaTag(prod.flashEnd);
-      const endStr = (meta.end || "").trim();
-      const validTime = !endStr || endStr.toUpperCase() === "UNTIL_STOCK" || endStr.toUpperCase() === "PERMANENT" || isNaN(Date.parse(endStr)) || now < Date.parse(endStr);
-      if (validTime) {
-        return {
-          pct: parseDecimal(prod.discount) || 0,
-          flashEnd: endStr || "UNTIL_STOCK",
-          name: meta.name || "فلاش سيل"
-        };
-      }
-    }
-
-    return null;
+    return {
+      pct: parseDecimal(prod.discount) || 0,
+      flashEnd: endStr || "UNTIL_STOCK",
+      name: meta.name || "فلاش سيل"
+    };
   }
 
   function isProductFlashActive(p) {
@@ -1840,7 +1824,7 @@
     return Boolean(getProductActiveCampaign(p.id));
   }
 
-  // يقرأ الفلاشات الموجودة في الشيت دون دمج منتجاتها داخل حملات أخرى في الإدارة
+  // مزامنة أسماء ومنتجات الحملات المحفوظة مع الشيت ومزامنة حالة كل حملة من منتجاتها في الشيت
   function syncCampaignsWithSheetProducts() {
     const now = Date.now();
     const activeSheetFlash = allProducts.filter(p => {
@@ -1851,7 +1835,6 @@
       const ms = Date.parse(endStr);
       return isNaN(ms) || now < ms;
     });
-    if (!activeSheetFlash.length) return;
 
     const groups = new Map();
     activeSheetFlash.forEach(p => {
@@ -1882,40 +1865,39 @@
           showToCustomer: true,
           isRunning: true
         });
+      } else {
+        flashCampaigns[existingIdx].isRunning = true;
+        flashCampaigns[existingIdx].showToCustomer = true;
+        if (grp.discountPct > 0) flashCampaigns[existingIdx].discountPct = grp.discountPct;
       }
     });
+
+    // إذا لم يعد أي منتج من الحملة مفعّلًا في الشيت، نجعل حالتها متوقفة لتطابق الشيت على كل الأجهزة
+    flashCampaigns.forEach(c => {
+      const ids = Array.isArray(c.productIds) ? c.productIds : [];
+      const anyActiveInSheet = ids.some(id => {
+        const prod = allProducts.find(x => x.id === id);
+        return prod && isProductFlashActive(prod);
+      });
+      if (!anyActiveInSheet) {
+        c.isRunning = false;
+        c.showToCustomer = false;
+      }
+    });
+
     saveFlashCampaignsToStorage();
   }
 
-  // يجمع منتجات كل الحملات المعلمة «يظهر للمستخدم» والشغالة في قائمة واحدة بدون تكرار
+  // تجميع كل المنتجات النشطة في الفلاش من الشيت مباشرة لتظهر لكل الزوار على أي جهاز
   function getUnifiedCustomerFlashProducts() {
-    const visibleCampaigns = flashCampaigns.filter(c => c.showToCustomer !== false && c.isRunning !== false);
     const seenIds = new Set();
     const merged = [];
-
-    if (visibleCampaigns.length) {
-      visibleCampaigns.forEach(c => {
-        (c.productIds || []).forEach(id => {
-          if (seenIds.has(id)) return;
-          const prod = allProducts.find(x => x.id === id && x.active);
-          if (prod && isProductFlashActive(prod)) {
-            seenIds.add(id);
-            merged.push(prod);
-          }
-        });
-      });
-      return merged;
-    }
-
-    if (!flashCampaigns.length) {
-      allProducts.forEach(p => {
-        if (p.active && isProductFlashActive(p) && !seenIds.has(p.id)) {
-          seenIds.add(p.id);
-          merged.push(p);
-        }
-      });
-    }
-
+    allProducts.forEach(p => {
+      if (p.active && isProductFlashActive(p) && !seenIds.has(p.id)) {
+        seenIds.add(p.id);
+        merged.push(p);
+      }
+    });
     return merged;
   }
 
@@ -2934,33 +2916,63 @@
     if (!camp) return;
     renderFlashCampaignsList();
     renderJumiaFlashSection();
-    renderProducts();
-    if (adminPassword) renderAdminTable();
-    showCartToast(`تم حفظ "${camp.name}" (${camp.productIds.length} منتج)`);
+    showCartToast(`تم حفظ "${camp.name}" (${camp.productIds.length} منتج) في القائمة`);
   }
 
-  function toggleCampaignCustomerVisibility(campaignId, checked) {
+  // إرسال حالة التشغيل أو الإيقاف إلى الشيت مباشرة لتسمّع على كل الأجهزة
+  async function setCampaignSheetState(campaignId, enabled) {
     const camp = flashCampaigns.find(c => c.id === campaignId);
     if (!camp) return;
-    camp.showToCustomer = Boolean(checked);
-    saveFlashCampaignsToStorage();
-    renderFlashCampaignsList();
-    renderJumiaFlashSection();
-    renderProducts();
-    if (adminPassword) renderAdminTable();
-    showCartToast(checked ? `ظهر "${camp.name}" للعميل` : `اختفى "${camp.name}" من عند العميل`);
+
+    const ids = Array.isArray(camp.productIds) ? camp.productIds : [];
+    const statusEl = document.getElementById("flashAdminStatusText");
+    if (statusEl) {
+      statusEl.innerText = enabled
+        ? `جاري تشغيل "${camp.name}" وتحديث الشيت...`
+        : `جاري إيقاف "${camp.name}" وتحديث الشيت...`;
+    }
+
+    try {
+      const res = await postAPI({
+        action: "batchFlashSale",
+        enabled: Boolean(enabled),
+        productIds: ids,
+        discountPct: enabled ? camp.discountPct : "",
+        flashEnd: enabled ? encodeFlashMetaTag(camp.name, camp.flashEnd) : "",
+        resetDiscountOnStop: !enabled
+      });
+
+      if (res.status === "success") {
+        camp.isRunning = Boolean(enabled);
+        camp.showToCustomer = Boolean(enabled);
+        saveFlashCampaignsToStorage();
+        await fetchProducts();
+        renderFlashCampaignsList();
+        if (statusEl) {
+          statusEl.innerText = enabled
+            ? `تم تشغيل "${camp.name}" وتحديث الشيت ✓`
+            : `تم إيقاف "${camp.name}" وتحديث الشيت ✓`;
+        }
+        showCartToast(enabled ? `تم تشغيل "${camp.name}"` : `تم إيقاف "${camp.name}"`);
+      } else {
+        alert(res.message || "تعذر تحديث حالة الفلاش في الشيت");
+        if (statusEl) statusEl.innerText = res.message || "تعذر تحديث الشيت";
+      }
+    } catch (err) {
+      alert("خطأ في الاتصال بالشيت: " + err.message);
+      if (statusEl) statusEl.innerText = "خطأ في الاتصال: " + err.message;
+    }
   }
 
-  function toggleCampaignRunningState(campaignId) {
+  async function toggleCampaignCustomerVisibility(campaignId, checked) {
+    await setCampaignSheetState(campaignId, Boolean(checked));
+  }
+
+  async function toggleCampaignRunningState(campaignId) {
     const camp = flashCampaigns.find(c => c.id === campaignId);
     if (!camp) return;
-    camp.isRunning = !(camp.isRunning !== false);
-    saveFlashCampaignsToStorage();
-    renderFlashCampaignsList();
-    renderJumiaFlashSection();
-    renderProducts();
-    if (adminPassword) renderAdminTable();
-    showCartToast(camp.isRunning ? `تم تشغيل "${camp.name}"` : `تم إيقاف "${camp.name}"`);
+    const nextState = !(camp.isRunning !== false);
+    await setCampaignSheetState(campaignId, nextState);
   }
 
   function loadCampaignIntoForm(campaignId) {
@@ -2982,16 +2994,35 @@
     showCartToast(`تم تحميل "${camp.name}"`);
   }
 
-  function deleteFlashCampaign(campaignId) {
+  async function deleteFlashCampaign(campaignId) {
+    const camp = flashCampaigns.find(c => c.id === campaignId);
+    if (!camp) return;
+
+    const ids = Array.isArray(camp.productIds) ? camp.productIds : [];
+    const statusEl = document.getElementById("flashAdminStatusText");
+    if (statusEl) statusEl.innerText = `جاري حذف "${camp.name}" وإيقافه من الشيت...`;
+
+    if (ids.length) {
+      try {
+        await postAPI({
+          action: "batchFlashSale",
+          enabled: false,
+          productIds: ids,
+          discountPct: "",
+          flashEnd: "",
+          resetDiscountOnStop: true
+        });
+      } catch (e) {}
+    }
+
     if (document.getElementById("editingCampaignId").value === campaignId) {
       document.getElementById("editingCampaignId").value = "";
     }
     flashCampaigns = flashCampaigns.filter(c => c.id !== campaignId);
     saveFlashCampaignsToStorage();
+    await fetchProducts();
     renderFlashCampaignsList();
-    renderJumiaFlashSection();
-    renderProducts();
-    if (adminPassword) renderAdminTable();
+    if (statusEl) statusEl.innerText = `تم حذف "${camp.name}" وتحديث الشيت ✓`;
   }
 
   function renderFlashCampaignsList() {
@@ -3135,7 +3166,6 @@
     onFlashProductCheckboxChange();
   }
 
-  // يطبّق الفلاش الحالي على منتجاته الخاصة فقط دون تغيير عدد منتجات الفلاشات الأخرى
   async function activateFlashSale() {
     const camp = upsertCampaignLocal(true, true);
     if (!camp) return;
