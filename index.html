@@ -128,6 +128,7 @@
     .btn-accent-wa:hover { background: #0e7368; }
     .btn-danger { background: var(--danger); color: #fff; }
     .btn-outline { background: #fff; border: 1px solid var(--border); color: var(--text); }
+    .btn-outline:hover { background: #f8fafc; }
     .btn-wa { background: #25D366; color: #fff; justify-content: center; font-size: 0.92rem; }
     .btn-wa:hover { background: #1ebe5d; }
     .btn-wa.disabled-link, .btn-accent-wa.disabled-link {
@@ -142,6 +143,210 @@
 
     /* Container & Filters */
     .container { max-width: 1200px; margin: 20px auto; padding: 0 16px; }
+
+    /* Single Collapsible Flash Sale Section for Customer */
+    .flash-section {
+      display: none;
+      background: #ffffff;
+      border: 2px solid var(--brand-red);
+      border-radius: 14px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(200, 35, 51, 0.08);
+    }
+    .flash-section.active { display: block; }
+    .flash-header-bar {
+      background: linear-gradient(90deg, var(--brand-red) 0%, #991b1b 55%, var(--primary) 100%);
+      color: #fff;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 3px solid var(--accent);
+    }
+    .flash-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      min-width: 0;
+      flex: 1 1 320px;
+    }
+    .flash-live-pill {
+      background: var(--accent);
+      color: var(--primary);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .flash-header-title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.35;
+    }
+    .flash-cats-sub {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fde68a;
+      margin-top: 2px;
+    }
+    .flash-header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .flash-countdown-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(19, 41, 75, 0.78);
+      border: 1px solid rgba(212, 168, 67, 0.85);
+      padding: 4px 11px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fde68a;
+    }
+    .flash-clock {
+      font-family: monospace;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+      direction: ltr;
+    }
+    .flash-trigger-btn {
+      background: #fff;
+      color: var(--brand-red);
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .flash-trigger-btn:hover { background: #fef9ec; }
+
+    .flash-shelf {
+      display: none;
+      padding: 14px 16px;
+      background: #fffafa;
+      border-top: 1px solid #fecaca;
+    }
+    .flash-shelf.open { display: block; }
+    .flash-shelf-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .flash-horizontal-track {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-behavior: smooth;
+    }
+    .flash-card {
+      flex: 0 0 215px;
+      background: #fff;
+      border: 1px solid #fecaca;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: 0.2s;
+    }
+    .flash-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(200, 35, 51, 0.12);
+      border-color: var(--brand-red);
+    }
+    .flash-disc-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: var(--brand-red);
+      color: #fff;
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      z-index: 2;
+    }
+    .flash-img-wrap {
+      height: 140px;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .flash-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+    .flash-card-body {
+      padding: 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .flash-card-title {
+      margin: 0 0 5px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--primary);
+      cursor: pointer;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.5em;
+    }
+    .flash-prices {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .flash-price-now {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--brand-red);
+    }
+    .flash-price-old {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    .flash-add-btn {
+      margin-top: auto;
+      width: 100%;
+      justify-content: center;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+    }
+
     .controls {
       background: var(--card);
       padding: 16px;
@@ -288,6 +493,30 @@
     }
     .btn-quick-wa:hover { background: #1ebe5d; }
 
+    /* Toast Notification */
+    .cart-toast {
+      position: fixed;
+      bottom: 22px;
+      right: 16px;
+      z-index: 250;
+      background: var(--primary);
+      color: #fff;
+      border: 1px solid var(--accent);
+      box-shadow: 0 8px 20px rgba(19, 41, 75, 0.22);
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: 0.22s ease;
+    }
+    .cart-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Cart Modal */
     .cart-customer-grid {
       display: grid;
@@ -361,6 +590,32 @@
       font-size: 0.88rem;
       border-radius: 6px;
     }
+    .cart-price-cell {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .cart-price-input {
+      width: 82px;
+      padding: 4px 6px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 0.86rem;
+      border-radius: 6px;
+      color: var(--brand-red);
+    }
+    .reset-price-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--primary);
+      border-radius: 5px;
+      padding: 2px 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .reset-price-btn:hover { background: #f1f5f9; }
     .cart-summary-bar {
       display: flex;
       justify-content: space-between;
@@ -443,21 +698,21 @@
     /* Floating Signature Watermark */
     .dev-watermark {
       position: fixed;
-      bottom: 14px;
-      left: 14px;
+      bottom: 12px;
+      left: 12px;
       z-index: 150;
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(6px);
       border: 1px solid rgba(212, 168, 67, 0.65);
       box-shadow: 0 4px 14px rgba(19, 41, 75, 0.12);
-      padding: 5px 14px;
+      padding: 4px 12px;
       border-radius: 999px;
       text-decoration: none;
       color: var(--primary);
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      opacity: 0.85;
+      opacity: 0.82;
       transition: 0.2s;
     }
     .dev-watermark:hover {
@@ -467,7 +722,7 @@
     }
     .sig-script {
       font-family: 'Great Vibes', cursive;
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       line-height: 1;
       color: var(--brand-red);
       letter-spacing: 0.5px;
@@ -496,16 +751,301 @@
       position: relative;
       border-top: 4px solid var(--accent);
     }
-    .modal-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 16px; }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 14px; }
     .close-btn { background: #f1f5f9; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-weight: bold; color: var(--primary); flex-shrink: 0; }
 
-    /* Product Details Gallery */
+    /* Product Details Gallery & Extra Note */
     .gallery-main { width: 100%; height: 300px; object-fit: contain; background: #f8fafc; border-radius: 10px; border: 1px solid var(--border); }
     .thumbs { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; padding-bottom: 4px; }
     .thumbs img { width: 65px; height: 65px; object-fit: cover; border-radius: 8px; border: 2px solid transparent; cursor: pointer; flex-shrink: 0; }
     .thumbs img.active { border-color: var(--brand-red); }
+    .det-extra-note {
+      display: none;
+      background: #fef9ec;
+      border: 1px solid #fde68a;
+      border-right: 4px solid var(--accent);
+      color: var(--primary);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin: 10px 0 12px;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+    .det-extra-note.visible { display: block; }
 
-    /* Admin Panel */
+    /* Clean Admin Tabs & Sections */
+    .admin-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+    .admin-tab-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+    }
+    .admin-tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .admin-tab-panel { display: none; }
+    .admin-tab-panel.active { display: block; }
+
+    .admin-section-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+    .admin-section-title {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .current-state-pill {
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      color: var(--primary);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+    .current-state-pill.active-disc {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: var(--brand-red);
+    }
+    .bulk-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr auto;
+      gap: 10px;
+      align-items: end;
+    }
+    .bulk-sub-row {
+      display: grid;
+      grid-template-columns: 1.1fr 2fr auto;
+      gap: 10px;
+      align-items: end;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+    .flash-meta-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr 1.1fr;
+      gap: 10px;
+      align-items: end;
+      margin-bottom: 10px;
+    }
+    .flash-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .flash-custom-dt-wrap {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .flash-custom-dt-wrap.visible {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: end;
+    }
+    .saved-campaigns-box {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+    .campaign-item-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.83rem;
+    }
+    .campaign-item-card.shown-to-user {
+      border-color: var(--brand-red);
+      background: #fffafa;
+    }
+    .campaign-meta-sub {
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 2px;
+    }
+    .campaign-status-chip {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      margin-right: 6px;
+    }
+    .campaign-status-chip.running {
+      background: #fef2f2;
+      color: var(--brand-red);
+      border: 1px solid #fecaca;
+    }
+    .campaign-status-chip.stopped {
+      background: #f1f5f9;
+      color: var(--muted);
+      border: 1px solid #cbd5e1;
+    }
+    .campaign-show-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 800;
+      color: var(--primary);
+      cursor: pointer;
+      user-select: none;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 4px 9px;
+      border-radius: 7px;
+    }
+    .campaign-show-toggle input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+      cursor: pointer;
+    }
+    .flash-picker-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 0 8px;
+      padding: 8px 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .flash-checklist-box {
+      max-height: 310px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      padding: 8px 12px;
+    }
+    .flash-cat-group {
+      margin-bottom: 10px;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 8px;
+    }
+    .flash-cat-group:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .flash-cat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f1f5f9;
+      padding: 6px 10px;
+      border-radius: 7px;
+      margin-bottom: 4px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .flash-cat-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+    .flash-arrow-btn {
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      color: var(--primary);
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .flash-arrow-btn:hover { background: #e2e8f0; }
+    .flash-cat-items {
+      display: none;
+      padding-right: 12px;
+      margin-top: 4px;
+    }
+    .flash-cat-items.expanded {
+      display: block;
+    }
+    .flash-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 0.84rem;
+    }
+    .flash-item-row:hover { background: #f8fafc; }
+    .flash-item-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      margin: 0;
+      font-weight: 700;
+      color: var(--primary);
+      flex: 1;
+    }
+    .flash-item-label input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+      cursor: pointer;
+    }
+    .bulk-status-text {
+      margin-top: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--brand-red);
+      min-height: 20px;
+    }
+
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .form-group { display: flex; flex-direction: column; gap: 5px; }
     .form-group.full { grid-column: 1 / -1; }
@@ -514,7 +1054,7 @@
       font-size: 0.82rem;
       font-weight: 700;
       color: var(--primary);
-      background: #f8fafc;
+      background: #fff;
       border: 1px solid var(--border);
       padding: 6px 10px;
       border-radius: 6px;
@@ -539,15 +1079,38 @@
     .admin-toolbar {
       display: flex;
       flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+    .admin-search-wrap { flex: 1 1 210px; min-width: 170px; }
+    .admin-filter-select { width: auto; min-width: 150px; }
+    .admin-batch-bar {
+      display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
+      gap: 8px;
+      background: #fef9ec;
+      border: 1px solid #fde68a;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
     }
-    .admin-search-wrap { flex: 1 1 220px; min-width: 180px; }
+    .admin-thumb {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px;
+    }
 
     .admin-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.85rem; }
-    .admin-table th, .admin-table td { border: 1px solid var(--border); padding: 8px; text-align: right; }
+    .admin-table th, .admin-table td { border: 1px solid var(--border); padding: 8px; text-align: right; vertical-align: middle; }
     .admin-table th { background: #f1f5f9; color: var(--primary); }
 
     .loader { text-align: center; padding: 40px; font-weight: 700; color: var(--primary); }
@@ -556,9 +1119,12 @@
     @media (max-width: 1024px) and (min-width: 601px) {
       .container { padding: 0 18px; }
       .grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+      .flash-card { flex: 0 0 195px; }
       .card-img-wrap { height: 195px; }
       .gallery-main { height: 270px; }
       .cart-actions-row { grid-template-columns: 1fr; }
+      .bulk-grid, .flash-meta-grid { grid-template-columns: 1fr 1fr; }
+      .bulk-sub-row { grid-template-columns: 1fr; }
     }
 
     /* Mobile (<= 600px) */
@@ -571,8 +1137,10 @@
       .brand-logo { height: 40px; max-width: 110px; }
       .btn { padding: 8px 11px; font-size: 0.82rem; }
       .container { margin: 14px auto; padding: 0 12px; }
+      .flash-card { flex: 0 0 175px; }
+      .flash-img-wrap { height: 120px; }
       .controls { padding: 12px; gap: 10px; }
-      .search-box, .category-select, .filter-pills { width: 100%; min-width: 0; }
+      .search-box, .category-select, .filter-pills, .admin-filter-select { width: 100%; min-width: 0; }
       .filter-pills .pill { flex: 1; text-align: center; }
       .grid { grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 12px; }
       .card-img-wrap { height: 155px; }
@@ -580,14 +1148,16 @@
       .card-title { font-size: 0.95rem; }
       .price-now { font-size: 1.08rem; }
       .card-actions { grid-template-columns: 1fr; }
-      .cart-customer-grid, .cart-actions-row { grid-template-columns: 1fr; }
+      .cart-customer-grid, .cart-actions-row, .bulk-grid, .bulk-sub-row, .flash-meta-grid, .flash-custom-dt-wrap.visible { grid-template-columns: 1fr; }
       .qty-input { width: 54px; }
+      .cart-price-input { width: 72px; }
       .modal-backdrop { padding: 10px; }
       .modal { padding: 15px; border-radius: 12px; max-height: 92vh; }
       .gallery-main { height: 220px; }
       .form-grid { grid-template-columns: 1fr; }
-      .dev-watermark { bottom: 10px; left: 10px; padding: 4px 11px; }
-      .sig-script { font-size: 1.25rem; }
+      .dev-watermark { bottom: 8px; left: 8px; padding: 3px 10px; opacity: 0.72; }
+      .sig-script { font-size: 1.15rem; }
+      .cart-toast { bottom: 56px; right: 12px; left: 12px; text-align: center; }
     }
   </style>
 </head>
@@ -611,6 +1181,37 @@
 </header>
 
 <div class="container">
+  <!-- شريط فلاش سيل واحد يضم كل منتجات الحملات المحددة للظهور للمستخدم -->
+  <section id="flashSection" class="flash-section" aria-label="فلاش سيل">
+    <div class="flash-header-bar">
+      <div class="flash-header-left">
+        <span id="flashLiveBadge" class="flash-live-pill">⚡ فلاش سيل</span>
+        <div style="min-width:0;">
+          <h2 class="flash-header-title">فلاش سيل</h2>
+          <span id="flashCategoriesSub" class="flash-cats-sub"></span>
+        </div>
+      </div>
+      <div class="flash-header-right">
+        <div id="flashCountdownWrap" class="flash-countdown-chip" style="display:none;">
+          <span>ينتهي خلال:</span>
+          <span id="flashCountdownClock" class="flash-clock">00:00:00</span>
+        </div>
+        <button type="button" class="flash-trigger-btn" onclick="toggleFlashShelf()">
+          <span id="flashToggleLabel">عرض المنتجات</span>
+          <span id="flashToggleArrow">▾</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="flashShelf" class="flash-shelf">
+      <div class="flash-shelf-toolbar">
+        <span>اسحب يمينًا أو يسارًا لتصفح المنتجات</span>
+        <button type="button" class="btn btn-outline btn-mini" onclick="filterByFlashOffers()">عرض الكل في الشبكة</button>
+      </div>
+      <div id="flashHorizontalTrack" class="flash-horizontal-track"></div>
+    </div>
+  </section>
+
   <div class="controls">
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="ابحث باسم المنتج، كود الشركة الأم، أو المواصفات..." oninput="renderProducts()">
@@ -676,6 +1277,9 @@
   </div>
 </footer>
 
+<!-- إشعار إضافة خفيف -->
+<div id="cartToast" class="cart-toast" role="status" aria-live="polite"></div>
+
 <!-- علامة مائية بتوقيع المطور -->
 <a id="devWatermarkLink" href="#" target="_blank" class="dev-watermark" title="تواصل مع المصمم لعمل موقع مشابه">
   <span class="sig-script">Mohammed Elkotb</span>
@@ -683,10 +1287,14 @@
 
 <!-- نافذة سلة الطلبات -->
 <div class="modal-backdrop" id="cartModal">
-  <div class="modal" style="max-width: 840px;">
+  <div class="modal" style="max-width: 860px;">
     <div class="modal-header">
       <h3 style="margin:0;">🛒 سلة الطلبات — Qotb Electric Store</h3>
       <button class="close-btn" onclick="closeModal('cartModal')">✕</button>
+    </div>
+
+    <div class="cart-notice warn" style="margin-bottom: 10px;">
+      ⚠️ تنبيه هام: السلة وتصدير الفاتورة لا يرسلان الطلب تلقائيًا للشركة — يجب الضغط على <strong>إرسال رسالة واتساب</strong> أو <strong>تحميل الصورة + فتح واتساب</strong> وإرسال الفاتورة فعليًا على واتساب الشركة.
     </div>
 
     <div class="cart-customer-grid">
@@ -712,7 +1320,7 @@
           <tr>
             <th>الكود الأصلي</th>
             <th>المنتج</th>
-            <th>السعر</th>
+            <th>السعر (قابل للتعديل)</th>
             <th>الكمية</th>
             <th>الإجمالي</th>
             <th>حذف</th>
@@ -789,6 +1397,7 @@
       <span id="detSku" class="sku-tag"></span>
       <span id="detCat" class="sku-tag" style="background:#fef3c7; color:#92400e; border-color:#fde68a;"></span>
       <p id="detDesc" style="line-height: 1.7; color: #334155; white-space: pre-line;"></p>
+      <div id="detExtraNote" class="det-extra-note"></div>
       <div id="detPriceBox" class="price-row"></div>
       <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
         <button type="button" id="detAddCartBtn" class="btn btn-add-cart" style="padding:11px 14px;">🛒 أضف للسلة</button>
@@ -798,86 +1407,255 @@
   </div>
 </div>
 
-<!-- نافذة لوحة التحكم -->
+<!-- نافذة لوحة التحكم المنظمة -->
 <div class="modal-backdrop" id="adminModal">
-  <div class="modal" style="max-width: 900px;">
+  <div class="modal" style="max-width: 960px;">
     <div class="modal-header">
-      <h3 style="margin:0;">لوحة إدارة المنتجات والأسعار — Qotb Electric Store</h3>
-      <button class="close-btn" onclick="closeModal('adminModal')">✕</button>
+      <h3 style="margin:0;">⚙️ لوحة إدارة المنتجات — Qotb Electric Store</h3>
+      <button class="close-btn" onclick="attemptCloseAdmin()">✕</button>
     </div>
 
-    <form id="productForm" onsubmit="saveProduct(event)">
-      <input type="hidden" id="editId">
-      <div class="form-grid">
-        <div class="form-group">
-          <label>اسم المنتج *</label>
-          <input type="text" id="pName" required placeholder="مثال: مفتاح أوتوماتيك 16 أمبير">
+    <div class="admin-tabs">
+      <button type="button" class="admin-tab-btn active" id="tabBtnProducts" onclick="switchAdminTab('products')">📦 المنتجات والفورم</button>
+      <button type="button" class="admin-tab-btn" id="tabBtnCategories" onclick="switchAdminTab('categories')">🏷️ خصم وتسمية وملاحظات التصنيفات</button>
+      <button type="button" class="admin-tab-btn" id="tabBtnFlash" onclick="switchAdminTab('flash')">⚡ فلاش سيل (حملات مستقلة)</button>
+    </div>
+
+    <!-- تبويب 1: المنتجات والفورم والجدول -->
+    <div id="adminTabProducts" class="admin-tab-panel active">
+      <div class="admin-section-card">
+        <div class="admin-section-title">
+          <span id="adminFormModeLabel">➕ إضافة منتج جديد</span>
+          <span id="formCurrentDiscountPill" class="current-state-pill">الخصم المطبق: لا يوجد</span>
         </div>
-        <div class="form-group">
-          <label>كود الشركة الأم (SKU)</label>
-          <input type="text" id="pSku" placeholder="مثال: SCH-A9F74116">
+        <form id="productForm" onsubmit="saveProduct(event)" oninput="markAdminDirty()">
+          <input type="hidden" id="editId">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>اسم المنتج *</label>
+              <input type="text" id="pName" required placeholder="مثال: مفتاح أوتوماتيك 16 أمبير">
+            </div>
+            <div class="form-group">
+              <label>كود الشركة الأم (SKU)</label>
+              <input type="text" id="pSku" placeholder="مثال: SCH-A9F74116">
+            </div>
+            <div class="form-group">
+              <label>التصنيف</label>
+              <input type="text" id="pCategory" list="catSuggestions" placeholder="مثال: أسلاك وكابلات، قواطع، إضاءة">
+              <datalist id="catSuggestions"></datalist>
+            </div>
+            <div class="form-group">
+              <label>شارة العرض (اختياري)</label>
+              <input type="text" id="pBadge" placeholder="مثال: عرض خاص">
+            </div>
+            <div class="form-group">
+              <label>سعر الليستة / الأساسي (ج.م) *</label>
+              <input type="number" step="any" id="pPrice" required oninput="updateDiscountPreview()">
+            </div>
+            <div class="form-group">
+              <label>نسبة الخصم (%) — أو سالب مثل -20 للزيادة</label>
+              <input type="number" step="any" min="-500" max="99.99" id="pDiscountPct" placeholder="مثال: 15 أو -20" oninput="updateDiscountPreview()">
+              <div id="discountPreview" class="calc-preview">السعر النهائي: نفس سعر الليستة</div>
+            </div>
+            <div class="form-group full">
+              <label>وصف ومواصفات المنتج</label>
+              <textarea id="pDesc" rows="2" placeholder="التفاصيل الفنية أو بلد المنشأ..."></textarea>
+            </div>
+            <div class="form-group full">
+              <label>ملاحظة للعميل عند فتح المنتج (اختياري)</label>
+              <input type="text" id="pExtraNote" placeholder="مثال: متاح بالمتر أو باللفة / التوريد خلال 24 ساعة">
+            </div>
+            <div class="form-group full">
+              <label>صور المنتج</label>
+              <input type="file" id="pFiles" accept="image/*" multiple onchange="handleImageUpload(event)">
+              <small id="uploadStatus" style="color: var(--primary); font-weight: bold;"></small>
+              <div id="adminImagesPreview" class="admin-img-list"></div>
+            </div>
+            <div class="form-group full" style="flex-direction: row; align-items: center; gap: 8px;">
+              <input type="checkbox" id="pActive" checked style="width: auto;">
+              <label for="pActive" style="margin:0;">إظهار المنتج للزبائن في المعرض</label>
+            </div>
+          </div>
+
+          <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="submit" class="btn btn-primary" id="saveBtn">💾 حفظ المنتج</button>
+            <button type="button" class="btn btn-outline" onclick="resetForm()">تفريغ الحقول</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-toolbar">
+        <h4 style="margin:0;">المنتجات (<span id="adminCount">0</span>)</h4>
+        <div class="admin-search-wrap">
+          <input type="text" id="adminSearchInput" placeholder="ابحث بالاسم أو الكود..." oninput="renderAdminTable()">
         </div>
-        <div class="form-group">
-          <label>التصنيف</label>
-          <input type="text" id="pCategory" list="catSuggestions" placeholder="مثال: قواطع، كابلات، إضاءة">
-          <datalist id="catSuggestions"></datalist>
-        </div>
-        <div class="form-group">
-          <label>شارة العرض (اختياري)</label>
-          <input type="text" id="pBadge" placeholder="مثال: عرض لفترة محدودة أو عرض خاص">
-        </div>
-        <div class="form-group">
-          <label>سعر الليستة / الأساسي (ج.م) *</label>
-          <input type="number" step="any" id="pPrice" required oninput="updateDiscountPreview()">
-        </div>
-        <div class="form-group">
-          <label>نسبة الخصم (%) — أو اكتب سالب مثل -20 لزيادة السعر</label>
-          <input type="number" step="any" min="-500" max="99.99" id="pDiscountPct" placeholder="مثال: 15 للخصم أو -20 للزيادة" oninput="updateDiscountPreview()">
-          <div id="discountPreview" class="calc-preview">السعر النهائي: نفس سعر الليستة</div>
-        </div>
-        <div class="form-group full">
-          <label>وصف ومواصفات المنتج</label>
-          <textarea id="pDesc" rows="3" placeholder="اكتب التفاصيل الفنية أو بلد المنشأ أو الضمان..."></textarea>
-        </div>
-        <div class="form-group full">
-          <label>صور المنتج (يمكنك اختيار أكثر من صورة معاً)</label>
-          <input type="file" id="pFiles" accept="image/*" multiple onchange="handleImageUpload(event)">
-          <small id="uploadStatus" style="color: var(--primary); font-weight: bold;"></small>
-          <div id="adminImagesPreview" class="admin-img-list"></div>
-        </div>
-        <div class="form-group full" style="flex-direction: row; align-items: center; gap: 8px;">
-          <input type="checkbox" id="pActive" checked style="width: auto;">
-          <label for="pActive" style="margin:0;">إظهار المنتج للزبائن في المعرض</label>
+        <select id="adminCategoryFilter" class="admin-filter-select" onchange="renderAdminTable()">
+          <option value="ALL">كل التصنيفات</option>
+        </select>
+        <select id="adminStatusFilter" class="admin-filter-select" onchange="renderAdminTable()">
+          <option value="ALL">كل الحالات</option>
+          <option value="ACTIVE">ظاهر</option>
+          <option value="HIDDEN">مخفي</option>
+          <option value="OFFERS">عروض وخصومات</option>
+        </select>
+      </div>
+
+      <div class="admin-batch-bar">
+        <span id="adminSelectedCount">المحدد: 0 منتج</span>
+        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+          <button type="button" class="btn btn-outline btn-mini" onclick="batchSetActive(true)">إظهار المحدد</button>
+          <button type="button" class="btn btn-outline btn-mini" onclick="batchSetActive(false)">إخفاء المحدد</button>
+          <button type="button" class="btn btn-danger btn-mini" onclick="batchDeleteSelected()">حذف المحدد</button>
         </div>
       </div>
 
-      <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
-        <button type="submit" class="btn btn-primary" id="saveBtn">💾 حفظ المنتج</button>
-        <button type="button" class="btn btn-outline" onclick="resetForm()">تفريغ الحقول</button>
-      </div>
-    </form>
-
-    <hr style="margin: 24px 0; border: 0; border-top: 1px solid var(--border);">
-    <div class="admin-toolbar">
-      <h4 style="margin:0;">قائمة المنتجات الحالية (<span id="adminCount">0</span>)</h4>
-      <div class="admin-search-wrap">
-        <input type="text" id="adminSearchInput" placeholder="ابحث داخل الإدارة بالاسم، كود الشركة الأم، أو التصنيف..." oninput="renderAdminTable()">
+      <div style="overflow-x: auto;">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th style="width:34px; text-align:center;"><input type="checkbox" id="selectAllAdmin" onchange="toggleSelectAllAdmin(this.checked)"></th>
+              <th style="width:52px; text-align:center;">صورة</th>
+              <th>الكود</th>
+              <th>المنتج</th>
+              <th>التصنيف</th>
+              <th>الليستة</th>
+              <th>الخصم / السعر الحالي</th>
+              <th>الحالة</th>
+              <th>إجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody"></tbody>
+        </table>
       </div>
     </div>
-    <div style="overflow-x: auto;">
-      <table class="admin-table">
-        <thead>
-          <tr>
-            <th>الكود</th>
-            <th>المنتج</th>
-            <th>الليستة</th>
-            <th>السعر الفعلي</th>
-            <th>الحالة</th>
-            <th>إجراءات</th>
-          </tr>
-        </thead>
-        <tbody id="adminTableBody"></tbody>
-      </table>
+
+    <!-- تبويب 2: خصم وتسمية وملاحظات التصنيفات -->
+    <div id="adminTabCategories" class="admin-tab-panel">
+      <div class="admin-section-card">
+        <div class="admin-section-title">
+          <span>🏷️ تعديل خصم أو سعر تصنيف بالكامل</span>
+          <span id="bulkCurrentDiscountBadge" class="current-state-pill">الخصم الحالي: اختر تصنيفًا</span>
+        </div>
+        <div class="bulk-grid">
+          <div class="form-group" style="margin:0;">
+            <label>التصنيف</label>
+            <select id="bulkCategorySelect" onchange="updateBulkCategoryBadge()">
+              <option value="">-- اختر التصنيف --</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label>نوع التعديل</label>
+            <select id="bulkModeSelect" onchange="updateBulkCategoryBadge()">
+              <option value="discount_pct">خصم (%)</option>
+              <option value="markup_pct">زيادة (%)</option>
+              <option value="clear_discount">إلغاء الخصم</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label>النسبة (%)</label>
+            <input type="number" step="any" id="bulkPctInput" placeholder="مثال: 2 أو 15" oninput="updateBulkCategoryBadge()">
+          </div>
+          <button type="button" id="bulkApplyBtn" class="btn btn-brand" style="padding:10px 14px;" onclick="applyBulkCategoryDiscount()">تطبيق على التصنيف</button>
+        </div>
+
+        <div class="bulk-sub-row">
+          <div class="form-group" style="margin:0;">
+            <label>تعديل اسم تصنيف أو إضافة علامة في أسماء منتجاته</label>
+            <select id="renameCategorySelect">
+              <option value="">-- اختر التصنيف --</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label>الاسم الجديد للتصنيف (أو علامة تُضاف مثل: - أصلي / ★)</label>
+            <input type="text" id="renameCategoryInput" placeholder="اكتب اسمًا جديدًا للصنف أو علامة لتمييز الأسماء...">
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button type="button" id="renameCatBtn" class="btn btn-primary" style="padding:10px 12px;" onclick="applyRenameCategory()">تغيير اسم الصنف</button>
+            <button type="button" id="tagItemsBtn" class="btn btn-outline" style="padding:10px 12px;" onclick="applyTagProductsInCategory()">إضافة علامة للأسماء</button>
+          </div>
+        </div>
+
+        <div class="bulk-sub-row">
+          <div class="form-group" style="margin:0;">
+            <label>ملاحظة مشتركة لتصنيف</label>
+            <select id="bulkNoteCategorySelect">
+              <option value="">-- اختر التصنيف --</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label>نص الملاحظة عند فتح المنتج</label>
+            <input type="text" id="bulkNoteInput" placeholder="مثال: السعر شامل الضريبة / التوريد خلال 24 ساعة">
+          </div>
+          <button type="button" class="btn btn-outline" style="padding:10px 14px;" onclick="applyBulkCategoryNote()">تطبيق الملاحظة</button>
+        </div>
+
+        <div id="bulkStatusText" class="bulk-status-text"></div>
+      </div>
+    </div>
+
+    <!-- تبويب 3: فلاش سيل (حملات مستقلة في الإدارة - تتجمع للعميل في شريط واحد) -->
+    <div id="adminTabFlash" class="admin-tab-panel">
+      <div class="admin-section-card">
+        <div class="admin-section-title">
+          <span>⚡ إدارة حملات الفلاش سيل المستقلة</span>
+          <span id="flashAdminStatusBadge" class="current-state-pill">0 ظاهر للعميل</span>
+        </div>
+
+        <div class="flash-meta-grid">
+          <div class="form-group" style="margin:0;">
+            <label>اسم الفلاش سيل (مثال: فلاش سيل 1، فلاش سيل 2...)</label>
+            <input type="text" id="flashNameInput" placeholder="مثال: فلاش سيل 1">
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label>نسبة الخصم الخاصة بهذا الفلاش (%)</label>
+            <input type="number" step="any" min="0" max="99" id="flashPctInput" placeholder="مثال: 20">
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label>مدة هذا الفلاش</label>
+            <select id="flashDurationSelect" onchange="toggleCustomFlashDateTime()">
+              <option value="24h">24 ساعة</option>
+              <option value="3d">3 أيام</option>
+              <option value="7d">أسبوع (7 أيام)</option>
+              <option value="custom">تاريخ ووقت محدد</option>
+              <option value="until_stock">حتى نفاذ الكمية</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flash-actions-row">
+          <input type="hidden" id="editingCampaignId">
+          <button type="button" id="flashActivateBtn" class="btn btn-brand" style="padding:9px 14px;" onclick="activateFlashSale()">حفظ وتطبيق منتجات هذا الفلاش</button>
+          <button type="button" class="btn btn-outline" style="padding:9px 14px;" onclick="saveFlashCampaignPreset()">حفظ في القائمة فقط</button>
+          <button type="button" class="btn btn-outline" style="padding:9px 14px;" onclick="resetFlashEditor()">فلاش جديد</button>
+        </div>
+
+        <div id="flashCustomDateTimeWrap" class="flash-custom-dt-wrap">
+          <div class="form-group" style="margin:0;">
+            <label>تاريخ ووقت انتهاء هذا الفلاش</label>
+            <input type="datetime-local" id="flashCustomDateTimeInput">
+          </div>
+          <span style="font-size:0.78rem; color:var(--muted); font-weight:700;">ينتهي تلقائيًا عند الموعد</span>
+        </div>
+
+        <div class="flash-picker-toolbar">
+          <span id="flashSelectedCount">منتجات هذا الفلاش: 0 منتج</span>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-outline btn-mini" onclick="setAllFlashCategoriesExpanded(true)">فتح كل الأصناف</button>
+            <button type="button" class="btn btn-outline btn-mini" onclick="setAllFlashCategoriesExpanded(false)">طي كل الأصناف</button>
+            <button type="button" class="btn btn-outline btn-mini" onclick="selectAllFlashProducts(true)">تحديد الكل</button>
+            <button type="button" class="btn btn-outline btn-mini" onclick="selectAllFlashProducts(false)">إلغاء تحديد الكل</button>
+          </div>
+        </div>
+
+        <div id="flashProductsChecklist" class="flash-checklist-box"></div>
+
+        <div class="saved-campaigns-box">
+          <div style="font-size:0.86rem; font-weight:800; color:var(--primary); margin-bottom:8px;">قائمة الفلاشات في الإدارة (كل فلاش مستقل بعدد منتجاته وحالته — علّم «يظهر للمستخدم» ليُضم لشريط العميل):</div>
+          <div id="flashCampaignsList"></div>
+        </div>
+
+        <div id="flashAdminStatusText" class="bulk-status-text"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -885,7 +1663,7 @@
 <script>
   // ================= إعدادات الربط والهوية والسلة =================
   const API_URL = "https://script.google.com/macros/s/AKfycbwAyhCJ3wQ3HHMgrxTzgNYyB68sl_OLQICH0vzVcDJ-8um9GgdG43DizH8JasoDPOXr/exec";
-  const WHATSAPP_NUMBER = "201146653076"; // رقم واتساب أ. قطب الأساسي للطلبات
+  const WHATSAPP_NUMBER = "201146653076";
   const STORE_NAME = "Qotb Electric Store";
   const LOGO_URL = "https://lh3.googleusercontent.com/d/1D205o4w_C29gH182dm_SjCfUoBVEHWPJ";
   const COMPANY_ADDRESS_LINE = "6 أكتوبر - ليلة القدر - مول السويدي";
@@ -896,8 +1674,10 @@
 
   const CART_STORAGE_KEY = "qotb_electric_cart_v1";
   const CUST_STORAGE_KEY = "qotb_electric_customer_v1";
-  const MAX_WA_ITEMS = 20;      // الحد الأقصى للأصناف المسموح إرسالها كرسالة واتساب نصية
-  const ITEMS_PER_IMAGE = 15;   // الحد الأقصى للأصناف في الصورة الواحدة للحفاظ على وضوح الخط والطباعة
+  const NOTES_STORAGE_KEY = "qotb_electric_notes_v1";
+  const FLASH_CAMPAIGNS_KEY = "qotb_flash_campaigns_v1";
+  const MAX_WA_ITEMS = 20;
+  const ITEMS_PER_IMAGE = 15;
   // ==============================================================
 
   let allProducts = [];
@@ -905,15 +1685,29 @@
   let adminPassword = "";
   let currentFormImages = [];
   let cartItems = [];
+  let selectedAdminIds = new Set();
+  let flashDraftIds = new Set();
+  let expandedFlashCats = new Set();
+  let flashCampaigns = [];
+  let isFlashShelfOpen = false;
+  let adminFormDirty = false;
   let cachedCanvasLogo = null;
+  let toastTimer = null;
+  let flashTimerInterval = null;
+  let extraNotesMap = {};
+
   const PLACEHOLDER_IMG = "https://via.placeholder.com/400x300?text=No+Image";
 
   window.onload = function () {
     applyBranding();
     preloadCanvasLogo();
+    loadNotesFromStorage();
+    loadFlashCampaignsFromStorage();
     loadCartFromStorage();
     loadCustomerMeta();
     updateCartBadge();
+    toggleCustomFlashDateTime();
+    startFlashLoop();
     fetchProducts();
   };
 
@@ -937,13 +1731,333 @@
     if (!LOGO_URL || !LOGO_URL.trim()) return;
     const img = new Image();
     img.crossOrigin = "anonymous";
-    img.onload = function () {
-      cachedCanvasLogo = img;
-    };
-    img.onerror = function () {
-      cachedCanvasLogo = null;
-    };
+    img.onload = function () { cachedCanvasLogo = img; };
+    img.onerror = function () { cachedCanvasLogo = null; };
     img.src = LOGO_URL.trim();
+  }
+
+  function loadNotesFromStorage() {
+    try {
+      const rawNotes = localStorage.getItem(NOTES_STORAGE_KEY);
+      if (rawNotes) {
+        const parsed = JSON.parse(rawNotes);
+        if (parsed && typeof parsed === "object") extraNotesMap = parsed;
+      }
+    } catch (e) {}
+  }
+
+  function saveExtraNotesMap() {
+    try { localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(extraNotesMap)); } catch (e) {}
+  }
+
+  function loadFlashCampaignsFromStorage() {
+    try {
+      const raw = localStorage.getItem(FLASH_CAMPAIGNS_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      flashCampaigns = Array.isArray(parsed)
+        ? parsed.map(c => ({
+            ...c,
+            showToCustomer: c.showToCustomer !== false,
+            isRunning: c.isRunning !== false,
+            productIds: Array.isArray(c.productIds) ? [...new Set(c.productIds)] : []
+          }))
+        : [];
+    } catch (e) {
+      flashCampaigns = [];
+    }
+  }
+
+  function saveFlashCampaignsToStorage() {
+    try { localStorage.setItem(FLASH_CAMPAIGNS_KEY, JSON.stringify(flashCampaigns)); } catch (e) {}
+  }
+
+  function parseFlashMetaTag(rawVal) {
+    const str = (rawVal || "").toString().trim();
+    if (!str) return { name: "", end: "" };
+    if (str.startsWith("{")) {
+      try {
+        const obj = JSON.parse(str);
+        return { name: (obj.name || "").toString().trim(), end: (obj.end || "").toString().trim() };
+      } catch (e) {}
+    }
+    if (str.includes("||")) {
+      const parts = str.split("||");
+      return { name: (parts[0] || "").trim(), end: (parts.slice(1).join("||") || "").trim() };
+    }
+    return { name: "", end: str };
+  }
+
+  function encodeFlashMetaTag(name, end) {
+    const cleanName = (name || "").toString().trim().replace(/\|\|/g, " ");
+    const cleanEnd = (end || "").toString().trim();
+    if (!cleanName) return cleanEnd;
+    return `${cleanName}||${cleanEnd || "UNTIL_STOCK"}`;
+  }
+
+  // يحدد هل المنتج داخل حملة فلاش سيل ظاهرة للعميل وشغالة، ويرجع بيانات الحملة الخاصة بالمنتج
+  function getProductActiveCampaign(productId) {
+    const prod = allProducts.find(x => x.id === productId);
+    if (!prod || !prod.active) return null;
+
+    const now = Date.now();
+    const matchedCampaign = flashCampaigns.find(c => {
+      if (c.showToCustomer === false || c.isRunning === false) return false;
+      const ids = Array.isArray(c.productIds) ? c.productIds : [];
+      if (!ids.includes(productId)) return false;
+      if (c.durationType === "custom" && c.flashEnd && c.flashEnd !== "UNTIL_STOCK" && c.flashEnd !== "PERMANENT") {
+        const ms = Date.parse(c.flashEnd);
+        if (!isNaN(ms) && now >= ms) return false;
+      }
+      return true;
+    });
+
+    if (matchedCampaign) {
+      return {
+        pct: parseDecimal(matchedCampaign.discountPct) || 0,
+        flashEnd: matchedCampaign.flashEnd || "UNTIL_STOCK",
+        name: matchedCampaign.name || "فلاش سيل"
+      };
+    }
+
+    if (!flashCampaigns.length && prod.flashSale) {
+      const meta = parseFlashMetaTag(prod.flashEnd);
+      const endStr = (meta.end || "").trim();
+      const validTime = !endStr || endStr.toUpperCase() === "UNTIL_STOCK" || endStr.toUpperCase() === "PERMANENT" || isNaN(Date.parse(endStr)) || now < Date.parse(endStr);
+      if (validTime) {
+        return {
+          pct: parseDecimal(prod.discount) || 0,
+          flashEnd: endStr || "UNTIL_STOCK",
+          name: meta.name || "فلاش سيل"
+        };
+      }
+    }
+
+    return null;
+  }
+
+  function isProductFlashActive(p) {
+    if (!p) return false;
+    return Boolean(getProductActiveCampaign(p.id));
+  }
+
+  // يقرأ الفلاشات الموجودة في الشيت دون دمج منتجاتها داخل حملات أخرى في الإدارة
+  function syncCampaignsWithSheetProducts() {
+    const now = Date.now();
+    const activeSheetFlash = allProducts.filter(p => {
+      if (!p.active || !p.flashSale) return false;
+      const meta = parseFlashMetaTag(p.flashEnd);
+      const endStr = (meta.end || "").trim();
+      if (!endStr || endStr.toUpperCase() === "UNTIL_STOCK" || endStr.toUpperCase() === "PERMANENT") return true;
+      const ms = Date.parse(endStr);
+      return isNaN(ms) || now < ms;
+    });
+    if (!activeSheetFlash.length) return;
+
+    const groups = new Map();
+    activeSheetFlash.forEach(p => {
+      const meta = parseFlashMetaTag(p.flashEnd);
+      const groupName = meta.name || "فلاش سيل";
+      if (!groups.has(groupName)) {
+        groups.set(groupName, {
+          name: groupName,
+          flashEnd: meta.end || "UNTIL_STOCK",
+          discountPct: parseDecimal(p.discount) || 0,
+          productIds: []
+        });
+      }
+      groups.get(groupName).productIds.push(p.id);
+    });
+
+    groups.forEach((grp, gName) => {
+      const existingIdx = flashCampaigns.findIndex(c => c.name === gName);
+      if (existingIdx < 0) {
+        flashCampaigns.push({
+          id: "FC-" + Date.now() + "-" + Math.floor(Math.random() * 1000),
+          name: gName,
+          discountPct: grp.discountPct,
+          durationType: (!grp.flashEnd || grp.flashEnd === "UNTIL_STOCK") ? "until_stock" : "custom",
+          flashEnd: grp.flashEnd,
+          durationLabel: (!grp.flashEnd || grp.flashEnd === "UNTIL_STOCK") ? "حتى نفاذ الكمية" : "محدد بوقت",
+          productIds: [...new Set(grp.productIds)],
+          showToCustomer: true,
+          isRunning: true
+        });
+      }
+    });
+    saveFlashCampaignsToStorage();
+  }
+
+  // يجمع منتجات كل الحملات المعلمة «يظهر للمستخدم» والشغالة في قائمة واحدة بدون تكرار
+  function getUnifiedCustomerFlashProducts() {
+    const visibleCampaigns = flashCampaigns.filter(c => c.showToCustomer !== false && c.isRunning !== false);
+    const seenIds = new Set();
+    const merged = [];
+
+    if (visibleCampaigns.length) {
+      visibleCampaigns.forEach(c => {
+        (c.productIds || []).forEach(id => {
+          if (seenIds.has(id)) return;
+          const prod = allProducts.find(x => x.id === id && x.active);
+          if (prod && isProductFlashActive(prod)) {
+            seenIds.add(id);
+            merged.push(prod);
+          }
+        });
+      });
+      return merged;
+    }
+
+    if (!flashCampaigns.length) {
+      allProducts.forEach(p => {
+        if (p.active && isProductFlashActive(p) && !seenIds.has(p.id)) {
+          seenIds.add(p.id);
+          merged.push(p);
+        }
+      });
+    }
+
+    return merged;
+  }
+
+  function getEarliestFlashEndMs(flashList) {
+    let earliest = null;
+    flashList.forEach(p => {
+      const activeCamp = getProductActiveCampaign(p.id);
+      const endStr = ((activeCamp && activeCamp.flashEnd) || "").trim();
+      if (!endStr || endStr.toUpperCase() === "UNTIL_STOCK" || endStr.toUpperCase() === "PERMANENT") return;
+      const ms = Date.parse(endStr);
+      if (!isNaN(ms) && ms > Date.now()) {
+        if (earliest === null || ms < earliest) earliest = ms;
+      }
+    });
+    return earliest;
+  }
+
+  function formatRemainingTime(ms) {
+    const totalSec = Math.max(0, Math.floor(ms / 1000));
+    const days = Math.floor(totalSec / 86400);
+    const hrs = Math.floor((totalSec % 86400) / 3600);
+    const mins = Math.floor((totalSec % 3600) / 60);
+    const secs = totalSec % 60;
+    const hh = String(hrs).padStart(2, "0");
+    const mm = String(mins).padStart(2, "0");
+    const ss = String(secs).padStart(2, "0");
+    return days > 0 ? `${days}ي ${hh}:${mm}:${ss}` : `${hh}:${mm}:${ss}`;
+  }
+
+  function toggleFlashShelf() {
+    isFlashShelfOpen = !isFlashShelfOpen;
+    document.getElementById("flashShelf").classList.toggle("open", isFlashShelfOpen);
+    document.getElementById("flashToggleLabel").innerText = isFlashShelfOpen ? "إخفاء المنتجات" : "عرض المنتجات";
+    document.getElementById("flashToggleArrow").innerText = isFlashShelfOpen ? "▴" : "▾";
+  }
+
+  function renderJumiaFlashSection() {
+    const section = document.getElementById("flashSection");
+    const track = document.getElementById("flashHorizontalTrack");
+    const catsSub = document.getElementById("flashCategoriesSub");
+    const badge = document.getElementById("flashLiveBadge");
+    const cdWrap = document.getElementById("flashCountdownWrap");
+    const clockEl = document.getElementById("flashCountdownClock");
+    const adminBadge = document.getElementById("flashAdminStatusBadge");
+
+    const flashList = getUnifiedCustomerFlashProducts();
+    const shownCampaignsCount = flashCampaigns.filter(c => c.showToCustomer !== false && c.isRunning !== false).length;
+
+    if (adminBadge) {
+      adminBadge.className = shownCampaignsCount > 0 ? "current-state-pill active-disc" : "current-state-pill";
+      adminBadge.innerText = shownCampaignsCount > 0 ? `${shownCampaignsCount} ظاهر للعميل` : "0 ظاهر للعميل";
+    }
+
+    if (!flashList.length) {
+      section.classList.remove("active");
+      section.removeAttribute("data-flash-end");
+      track.innerHTML = "";
+      isFlashShelfOpen = false;
+      document.getElementById("flashShelf").classList.remove("open");
+      return;
+    }
+
+    section.classList.add("active");
+    const catsList = [...new Set(flashList.map(p => (p.category || "").trim()).filter(Boolean))];
+    catsSub.innerText = catsList.length ? `الأصناف: ${catsList.join(" • ")}` : "";
+
+    const earliestEnd = getEarliestFlashEndMs(flashList);
+    if (earliestEnd) {
+      section.setAttribute("data-flash-end", String(earliestEnd));
+      badge.innerText = "⚡ فلاش سيل";
+      cdWrap.style.display = "inline-flex";
+      clockEl.innerText = formatRemainingTime(earliestEnd - Date.now());
+    } else {
+      section.removeAttribute("data-flash-end");
+      badge.innerText = "🔥 حتى نفاذ الكمية";
+      cdWrap.style.display = "none";
+    }
+
+    document.getElementById("flashShelf").classList.toggle("open", isFlashShelfOpen);
+    document.getElementById("flashToggleLabel").innerText = isFlashShelfOpen ? "إخفاء المنتجات" : "عرض المنتجات";
+    document.getElementById("flashToggleArrow").innerText = isFlashShelfOpen ? "▴" : "▾";
+
+    track.innerHTML = flashList.map(p => {
+      const info = getPriceDisplayInfo(p);
+      const imgUrl = p.images && p.images.length ? p.images[0] : PLACEHOLDER_IMG;
+      const discLabel = info.discountPct > 0 ? `-${formatMoney(info.discountPct)}%` : "فلاش سيل";
+
+      return `
+        <div class="flash-card">
+          <span class="flash-disc-badge">${discLabel}</span>
+          <div class="flash-img-wrap" onclick="openDetails('${p.id}')">
+            <img src="${imgUrl}" alt="${p.name}" loading="lazy">
+          </div>
+          <div class="flash-card-body">
+            <h3 class="flash-card-title" onclick="openDetails('${p.id}')">${p.name}</h3>
+            <div class="flash-prices">
+              <span class="flash-price-now">${formatMoney(info.finalPrice)} ج.م</span>
+              ${info.isDiscounted ? `<span class="flash-price-old">${formatMoney(info.basePrice)} ج.م</span>` : ""}
+            </div>
+            <button type="button" class="btn btn-primary flash-add-btn" onclick="addToCart('${p.id}')">🛒 أضف للسلة</button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function startFlashLoop() {
+    renderJumiaFlashSection();
+    if (flashTimerInterval) clearInterval(flashTimerInterval);
+    flashTimerInterval = setInterval(() => {
+      const section = document.getElementById("flashSection");
+      const clockEl = document.getElementById("flashCountdownClock");
+      if (!section || !section.classList.contains("active")) return;
+
+      const endMs = Number(section.getAttribute("data-flash-end") || 0);
+      if (endMs > 0) {
+        const rem = endMs - Date.now();
+        if (rem <= 0) {
+          renderJumiaFlashSection();
+          renderProducts();
+          if (adminPassword) renderAdminTable();
+        } else if (clockEl) {
+          clockEl.innerText = formatRemainingTime(rem);
+        }
+      }
+    }, 1000);
+  }
+
+  function filterByFlashOffers() {
+    setOfferFilter(true);
+    document.querySelector(".controls").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function showCartToast(message) {
+    const toastEl = document.getElementById("cartToast");
+    if (!toastEl) return;
+    toastEl.innerText = message;
+    toastEl.classList.add("show");
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toastEl.classList.remove("show");
+    }, 2200);
   }
 
   function parseDecimal(val) {
@@ -967,7 +2081,6 @@
     return Number.isInteger(rounded) ? rounded.toString() : rounded.toFixed(2);
   }
 
-  // يدعم الخصم الموجب (مثلاً 15 -> خصم 15%) والزيادة السالبة (مثلاً -20 -> زيادة 20% فوق الليستة)
   function computeDiscountPrice(price, pct) {
     const p = parseDecimal(price);
     const rawPct = parseDecimal(pct);
@@ -977,14 +2090,66 @@
     return Math.round(finalVal * 100) / 100;
   }
 
+  function getProductExtraNote(p) {
+    if (extraNotesMap && Object.prototype.hasOwnProperty.call(extraNotesMap, p.id)) {
+      return extraNotesMap[p.id] || "";
+    }
+    return p.extraNote || "";
+  }
+
   function getPriceDisplayInfo(p) {
     const basePrice = parseDecimal(p.price) || 0;
-    const discParsed = parseDecimal(p.discountPrice);
-    const hasCustomPrice = !isNaN(discParsed) && discParsed > 0;
-    const finalPrice = hasCustomPrice ? discParsed : basePrice;
-    const isDiscounted = hasCustomPrice && finalPrice < basePrice && basePrice > 0;
-    const isMarkedUp = hasCustomPrice && finalPrice > basePrice && basePrice > 0;
-    const autoPct = isDiscounted ? Math.round((1 - finalPrice / basePrice) * 10000) / 100 : 0;
+    const activeCamp = getProductActiveCampaign(p.id);
+
+    if (activeCamp) {
+      const campPct = activeCamp.pct;
+      let finalPrice = basePrice;
+      if (!isNaN(campPct) && campPct !== 0 && campPct < 100 && basePrice > 0) {
+        finalPrice = Math.round(basePrice * (1 - campPct / 100) * 100) / 100;
+      }
+      const isDiscounted = basePrice > 0 && finalPrice < basePrice;
+      const isMarkedUp = basePrice > 0 && finalPrice > basePrice;
+      const pct = isDiscounted
+        ? Math.round((1 - finalPrice / basePrice) * 10000) / 100
+        : (campPct > 0 ? campPct : 0);
+
+      return {
+        basePrice,
+        finalPrice,
+        isDiscounted,
+        isMarkedUp,
+        hasOffer: true,
+        discountPct: pct,
+        badgeText: pct > 0 ? `فلاش سيل ${formatMoney(pct)}%` : "فلاش سيل"
+      };
+    }
+
+    const discPriceParsed = parseDecimal(p.discountPrice);
+    const sheetPctParsed = parseDecimal(p.discount);
+
+    let finalPrice = basePrice;
+    if (!isNaN(discPriceParsed) && discPriceParsed > 0) {
+      finalPrice = discPriceParsed;
+    } else if (!isNaN(sheetPctParsed) && sheetPctParsed !== 0 && sheetPctParsed < 100 && basePrice > 0) {
+      finalPrice = Math.round(basePrice * (1 - sheetPctParsed / 100) * 100) / 100;
+    }
+
+    const isDiscounted = basePrice > 0 && finalPrice < basePrice;
+    const isMarkedUp = basePrice > 0 && finalPrice > basePrice;
+
+    let pct = 0;
+    if (isDiscounted) {
+      pct = Math.round((1 - finalPrice / basePrice) * 10000) / 100;
+    } else if (!isNaN(sheetPctParsed) && sheetPctParsed > 0) {
+      pct = sheetPctParsed;
+    }
+
+    let badgeText = "";
+    if (p.offerBadge) {
+      badgeText = p.offerBadge;
+    } else if (isDiscounted) {
+      badgeText = `خصم ${formatMoney(pct)}%`;
+    }
 
     return {
       basePrice,
@@ -992,15 +2157,26 @@
       isDiscounted,
       isMarkedUp,
       hasOffer: isDiscounted || Boolean(p.offerBadge),
-      discountPct: isDiscounted ? autoPct : 0,
-      badgeText: p.offerBadge || (isDiscounted ? `خصم ${formatMoney(autoPct)}%` : "")
+      discountPct: pct,
+      badgeText
     };
+  }
+
+  function getProductCurrentDiscountLabel(p) {
+    const info = getPriceDisplayInfo(p);
+    if (info.isDiscounted) return `خصم ${formatMoney(info.discountPct)}%`;
+    if (info.isMarkedUp) {
+      const upPct = info.basePrice > 0 ? Math.round(((info.finalPrice - info.basePrice) / info.basePrice) * 10000) / 100 : 0;
+      return `زيادة ${formatMoney(upPct)}%`;
+    }
+    return "بدون خصم";
   }
 
   function updateDiscountPreview() {
     const priceVal = document.getElementById("pPrice").value;
     const pctVal = document.getElementById("pDiscountPct").value;
     const previewEl = document.getElementById("discountPreview");
+    const pillEl = document.getElementById("formCurrentDiscountPill");
     const baseP = parseDecimal(priceVal);
     const pctNum = parseDecimal(pctVal);
     const calc = computeDiscountPrice(priceVal, pctVal);
@@ -1011,18 +2187,26 @@
       if (calc < baseP) {
         previewEl.classList.add("is-discount");
         previewEl.innerText = `السعر بعد الخصم (${formatMoney(pctNum)}%): ${formatMoney(calc)} ج.م`;
+        pillEl.className = "current-state-pill active-disc";
+        pillEl.innerText = `الخصم المطبق: ${formatMoney(pctNum)}%`;
       } else {
         previewEl.classList.add("is-markup");
         previewEl.innerText = `السعر بعد الزيادة (${formatMoney(Math.abs(pctNum))}%): ${formatMoney(calc)} ج.م`;
+        pillEl.className = "current-state-pill";
+        pillEl.innerText = `زيادة مطبقة: ${formatMoney(Math.abs(pctNum))}%`;
       }
     } else if (!isNaN(baseP) && baseP > 0) {
       previewEl.innerText = `السعر النهائي: ${formatMoney(baseP)} ج.م`;
+      pillEl.className = "current-state-pill";
+      pillEl.innerText = "الخصم المطبق: لا يوجد";
     } else {
       previewEl.innerText = "السعر النهائي: نفس سعر الليستة";
+      pillEl.className = "current-state-pill";
+      pillEl.innerText = "الخصم المطبق: لا يوجد";
     }
   }
 
-  // ================= إدارة السلة والعميل والملاحظات =================
+  // ================= إدارة السلة وتعديل السعر والعميل والملاحظات =================
   function loadCartFromStorage() {
     try {
       const raw = localStorage.getItem(CART_STORAGE_KEY);
@@ -1070,18 +2254,22 @@
     if (!p) return;
     const info = getPriceDisplayInfo(p);
     const existing = cartItems.find(item => item.id === p.id);
+    let currentQty = 1;
 
     if (existing) {
       existing.qty += 1;
+      existing.catalogPrice = info.finalPrice;
       existing.price = info.finalPrice;
       existing.discountPct = info.discountPct;
       existing.name = p.name;
       existing.sku = p.sku || "";
+      currentQty = existing.qty;
     } else {
       cartItems.push({
         id: p.id,
         sku: p.sku || "",
         name: p.name,
+        catalogPrice: info.finalPrice,
         price: info.finalPrice,
         discountPct: info.discountPct,
         qty: 1
@@ -1089,7 +2277,11 @@
     }
 
     saveCartToStorage();
-    openCartModal();
+    showCartToast(
+      existing
+        ? `تمت زيادة كمية "${p.name}" في السلة (${currentQty})`
+        : `تمت إضافة "${p.name}" إلى السلة`
+    );
   }
 
   function changeCartQty(index, delta) {
@@ -1108,6 +2300,31 @@
     if (!cartItems[index]) return;
     const cleaned = parseInt(String(rawVal).replace(/[^\d]/g, ""), 10);
     cartItems[index].qty = isNaN(cleaned) || cleaned < 1 ? 1 : cleaned;
+    saveCartToStorage();
+    updateCartModalUI();
+  }
+
+  function setCartItemPriceDirect(index, rawVal) {
+    if (!cartItems[index]) return;
+    const parsed = parseDecimal(rawVal);
+    if (isNaN(parsed) || parsed < 0) {
+      updateCartModalUI();
+      return;
+    }
+    cartItems[index].price = Math.round(parsed * 100) / 100;
+    cartItems[index].discountPct = 0;
+    saveCartToStorage();
+    updateCartModalUI();
+  }
+
+  function resetCartItemPrice(index) {
+    if (!cartItems[index]) return;
+    const p = allProducts.find(x => x.id === cartItems[index].id);
+    const liveInfo = p ? getPriceDisplayInfo(p) : null;
+    const fallback = liveInfo ? liveInfo.finalPrice : (parseDecimal(cartItems[index].catalogPrice) || 0);
+    cartItems[index].price = fallback;
+    cartItems[index].catalogPrice = fallback;
+    cartItems[index].discountPct = liveInfo ? liveInfo.discountPct : 0;
     saveCartToStorage();
     updateCartModalUI();
   }
@@ -1191,16 +2408,26 @@
 
     tbody.innerHTML = cartItems.map((item, idx) => {
       const unitPrice = parseDecimal(item.price) || 0;
+      const catalogPrice = parseDecimal(item.catalogPrice);
+      const isEdited = !isNaN(catalogPrice) && Math.abs(unitPrice - catalogPrice) > 0.001;
       const lineTotal = Math.round(unitPrice * item.qty * 100) / 100;
       totalQty += item.qty;
       grandTotal += lineTotal;
-      const discTag = item.discountPct > 0 ? `<br><small style="color:var(--brand-red); font-weight:700;">خصم ${formatMoney(item.discountPct)}%</small>` : "";
+      const discTag = item.discountPct > 0 ? `<small style="color:var(--brand-red); font-weight:700;">خصم ${formatMoney(item.discountPct)}%</small>` : "";
+      const resetBtn = isEdited ? `<button type="button" class="reset-price-btn" title="استرجاع السعر الأصلي" onclick="resetCartItemPrice(${idx})">أصل</button>` : "";
 
       return `
         <tr>
           <td><code>${item.sku || "-"}</code></td>
           <td><strong>${item.name}</strong></td>
-          <td>${formatMoney(unitPrice)} ج.م${discTag}</td>
+          <td>
+            <div class="cart-price-cell">
+              <input type="number" step="any" min="0" class="cart-price-input" value="${formatMoney(unitPrice)}" onchange="setCartItemPriceDirect(${idx}, this.value)">
+              <span style="font-size:0.78rem; font-weight:700;">ج.م</span>
+              ${resetBtn}
+            </div>
+            ${discTag ? `<div>${discTag}</div>` : ""}
+          </td>
           <td>
             <div class="qty-box">
               <button type="button" class="qty-btn" onclick="changeCartQty(${idx}, -1)">-</button>
@@ -1311,17 +2538,14 @@
     const ctx = canvas.getContext("2d");
     ctx.direction = "rtl";
 
-    // خلفية الفاتورة
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, width, height);
 
-    // شريط علوي كحلي وذهبي
     ctx.fillStyle = "#13294B";
     ctx.fillRect(0, 0, width, 12);
     ctx.fillStyle = "#D4A843";
     ctx.fillRect(0, 12, width, 5);
 
-    // اللوجو في أعلى يمين الفاتورة + اسم المتجر والتاريخ
     const logoDrawn = drawLogoOnCanvas(ctx, width - 40, 26, 92, 68);
     const textRightX = logoDrawn ? (width - 146) : (width - 40);
 
@@ -1340,7 +2564,6 @@
     ctx.font = "800 20px Cairo, sans-serif";
     ctx.fillText(`رقم الطلب: ${orderCode}${pageTag}`, 40, 56);
 
-    // بيانات العميل وملاحظات الطلب إن وُجدت
     let cursorY = 114;
     if (hasContactBox) {
       ctx.textAlign = "right";
@@ -1376,7 +2599,6 @@
       cursorY += 50;
     }
 
-    // أعمدة الجدول (من اليمين لليسار)
     const cols = [
       { title: "الكود الأصلي", rightX: width - 40, w: 205, align: "right" },
       { title: "اسم المنتج", rightX: width - 245, w: 455, align: "right" },
@@ -1403,7 +2625,6 @@
       }
     });
 
-    // صفوف الأصناف
     chunkItems.forEach((item, idx) => {
       const y = tableTopY + tableHeaderHeight + idx * rowHeight;
       ctx.fillStyle = idx % 2 === 0 ? "#ffffff" : "#f8fafc";
@@ -1445,7 +2666,6 @@
       ctx.fillText(`${formatMoney(lineTotal)} ج.م`, 54, y + 33);
     });
 
-    // صندوق الإجماليات
     const totalsY = tableTopY + tableHeaderHeight + chunkItems.length * rowHeight + 14;
     ctx.fillStyle = "#fef9ec";
     drawRoundedRect(ctx, 40, totalsY, width - 80, totalBoxHeight, 10);
@@ -1467,7 +2687,6 @@
     ctx.font = "800 23px Cairo, sans-serif";
     ctx.fillText(`الإجمالي الكلي: ${formatMoney(overallTotal)} ج.م`, 56, totalsY + 45);
 
-    // بيانات التواصل والعنوان في أسفل الفاتورة
     const infoFooterY = totalsY + totalBoxHeight + 12;
     ctx.fillStyle = "#f8fafc";
     drawRoundedRect(ctx, 40, infoFooterY, width - 80, companyFooterHeight, 10);
@@ -1556,9 +2775,16 @@
       const json = await res.json();
       if (json.status === "success") {
         allProducts = json.data;
+        syncCampaignsWithSheetProducts();
         populateCategories();
+        renderJumiaFlashSection();
         renderProducts();
-        if (adminPassword) renderAdminTable();
+        if (adminPassword) {
+          populateBulkAndAdminFilters();
+          renderAdminTable();
+          renderFlashChecklist();
+          renderFlashCampaignsList();
+        }
       }
     } catch (err) {
       console.error("FETCH_ERROR:", err);
@@ -1572,12 +2798,376 @@
     const cats = [...new Set(allProducts.map(p => p.category).filter(Boolean))];
     const select = document.getElementById("categoryFilter");
     const datalist = document.getElementById("catSuggestions");
+    const prevCat = select.value || "ALL";
     select.innerHTML = '<option value="ALL">كل التصنيفات</option>';
     datalist.innerHTML = "";
     cats.forEach(c => {
       select.innerHTML += `<option value="${c}">${c}</option>`;
       datalist.innerHTML += `<option value="${c}">`;
     });
+    if (prevCat === "ALL" || cats.includes(prevCat)) {
+      select.value = prevCat;
+    }
+  }
+
+  function populateBulkAndAdminFilters() {
+    const cats = [...new Set(allProducts.map(p => p.category).filter(Boolean))];
+    const bulkSelect = document.getElementById("bulkCategorySelect");
+    const renameSelect = document.getElementById("renameCategorySelect");
+    const bulkNoteSelect = document.getElementById("bulkNoteCategorySelect");
+    const adminCatFilter = document.getElementById("adminCategoryFilter");
+
+    const prevBulk = bulkSelect.value;
+    const prevRename = renameSelect.value;
+    const prevBulkNote = bulkNoteSelect.value;
+    const prevAdminCat = adminCatFilter.value || "ALL";
+
+    bulkSelect.innerHTML = '<option value="">-- اختر التصنيف --</option>';
+    renameSelect.innerHTML = '<option value="">-- اختر التصنيف --</option>';
+    bulkNoteSelect.innerHTML = '<option value="">-- اختر التصنيف --</option>';
+    cats.forEach(c => {
+      bulkSelect.innerHTML += `<option value="${c}">${c}</option>`;
+      renameSelect.innerHTML += `<option value="${c}">${c}</option>`;
+      bulkNoteSelect.innerHTML += `<option value="${c}">${c}</option>`;
+    });
+    if (cats.includes(prevBulk)) bulkSelect.value = prevBulk;
+    if (cats.includes(prevRename)) renameSelect.value = prevRename;
+    if (cats.includes(prevBulkNote)) bulkNoteSelect.value = prevBulkNote;
+
+    adminCatFilter.innerHTML = '<option value="ALL">كل التصنيفات</option>';
+    cats.forEach(c => {
+      adminCatFilter.innerHTML += `<option value="${c}">${c}</option>`;
+    });
+    if (prevAdminCat === "ALL" || cats.includes(prevAdminCat)) {
+      adminCatFilter.value = prevAdminCat;
+    }
+
+    updateBulkCategoryBadge();
+  }
+
+  function toggleCustomFlashDateTime() {
+    const mode = document.getElementById("flashDurationSelect").value;
+    const wrap = document.getElementById("flashCustomDateTimeWrap");
+    const dtInput = document.getElementById("flashCustomDateTimeInput");
+    wrap.classList.toggle("visible", mode === "custom");
+    if (mode === "custom" && !dtInput.value) {
+      const tomorrow = new Date(Date.now() + 24 * 3600 * 1000);
+      const localIso = new Date(tomorrow.getTime() - tomorrow.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+      dtInput.value = localIso;
+    }
+  }
+
+  function computeFlashEndFromForm() {
+    const durationType = document.getElementById("flashDurationSelect").value;
+    const nowMs = Date.now();
+    if (durationType === "24h") return { ok: true, end: new Date(nowMs + 24 * 3600 * 1000).toISOString(), label: "24 ساعة" };
+    if (durationType === "3d") return { ok: true, end: new Date(nowMs + 3 * 24 * 3600 * 1000).toISOString(), label: "3 أيام" };
+    if (durationType === "7d") return { ok: true, end: new Date(nowMs + 7 * 24 * 3600 * 1000).toISOString(), label: "أسبوع" };
+    if (durationType === "custom") {
+      const rawDt = document.getElementById("flashCustomDateTimeInput").value;
+      const customMs = Date.parse(rawDt);
+      if (!rawDt || isNaN(customMs) || customMs <= nowMs) {
+        return { ok: false, message: "اختر تاريخ ووقت انتهاء في المستقبل." };
+      }
+      return { ok: true, end: new Date(customMs).toISOString(), label: new Date(customMs).toLocaleString("ar-EG") };
+    }
+    return { ok: true, end: "UNTIL_STOCK", label: "حتى نفاذ الكمية" };
+  }
+
+  function resetFlashEditor() {
+    document.getElementById("editingCampaignId").value = "";
+    document.getElementById("flashNameInput").value = "";
+    document.getElementById("flashPctInput").value = "";
+    document.getElementById("flashDurationSelect").value = "24h";
+    toggleCustomFlashDateTime();
+    flashDraftIds = new Set();
+    renderFlashChecklist();
+  }
+
+  function upsertCampaignLocal(showToCustomer, isRunning) {
+    const editId = (document.getElementById("editingCampaignId").value || "").trim();
+    const name = (document.getElementById("flashNameInput").value || "").trim() || `فلاش سيل ${flashCampaigns.length + 1}`;
+    const pct = parseDecimal(document.getElementById("flashPctInput").value);
+    const chosenIds = [...new Set(flashDraftIds)];
+    const endInfo = computeFlashEndFromForm();
+
+    if (!chosenIds.length) {
+      alert("اختر منتجًا واحدًا على الأقل لهذا الفلاش.");
+      return null;
+    }
+    if (isNaN(pct) || pct <= 0 || pct >= 100) {
+      alert("أدخل نسبة خصم صحيحة أكبر من 0 وأقل من 100.");
+      return null;
+    }
+    if (!endInfo.ok) {
+      alert(endInfo.message);
+      return null;
+    }
+
+    const existingIdx = editId
+      ? flashCampaigns.findIndex(c => c.id === editId)
+      : flashCampaigns.findIndex(c => c.name === name);
+
+    const prevCamp = existingIdx >= 0 ? flashCampaigns[existingIdx] : null;
+    const campaignObj = {
+      id: prevCamp ? prevCamp.id : ("FC-" + Date.now() + "-" + Math.floor(Math.random() * 1000)),
+      name,
+      discountPct: pct,
+      durationType: document.getElementById("flashDurationSelect").value,
+      flashEnd: endInfo.end,
+      durationLabel: endInfo.label,
+      productIds: chosenIds,
+      showToCustomer: showToCustomer !== undefined ? Boolean(showToCustomer) : (prevCamp ? prevCamp.showToCustomer !== false : true),
+      isRunning: isRunning !== undefined ? Boolean(isRunning) : (prevCamp ? prevCamp.isRunning !== false : true)
+    };
+
+    if (existingIdx >= 0) flashCampaigns[existingIdx] = campaignObj;
+    else flashCampaigns.push(campaignObj);
+
+    document.getElementById("editingCampaignId").value = campaignObj.id;
+    saveFlashCampaignsToStorage();
+    return campaignObj;
+  }
+
+  function saveFlashCampaignPreset() {
+    const camp = upsertCampaignLocal(undefined, undefined);
+    if (!camp) return;
+    renderFlashCampaignsList();
+    renderJumiaFlashSection();
+    renderProducts();
+    if (adminPassword) renderAdminTable();
+    showCartToast(`تم حفظ "${camp.name}" (${camp.productIds.length} منتج)`);
+  }
+
+  function toggleCampaignCustomerVisibility(campaignId, checked) {
+    const camp = flashCampaigns.find(c => c.id === campaignId);
+    if (!camp) return;
+    camp.showToCustomer = Boolean(checked);
+    saveFlashCampaignsToStorage();
+    renderFlashCampaignsList();
+    renderJumiaFlashSection();
+    renderProducts();
+    if (adminPassword) renderAdminTable();
+    showCartToast(checked ? `ظهر "${camp.name}" للعميل` : `اختفى "${camp.name}" من عند العميل`);
+  }
+
+  function toggleCampaignRunningState(campaignId) {
+    const camp = flashCampaigns.find(c => c.id === campaignId);
+    if (!camp) return;
+    camp.isRunning = !(camp.isRunning !== false);
+    saveFlashCampaignsToStorage();
+    renderFlashCampaignsList();
+    renderJumiaFlashSection();
+    renderProducts();
+    if (adminPassword) renderAdminTable();
+    showCartToast(camp.isRunning ? `تم تشغيل "${camp.name}"` : `تم إيقاف "${camp.name}"`);
+  }
+
+  function loadCampaignIntoForm(campaignId) {
+    const camp = flashCampaigns.find(c => c.id === campaignId);
+    if (!camp) return;
+    document.getElementById("editingCampaignId").value = camp.id;
+    document.getElementById("flashNameInput").value = camp.name;
+    document.getElementById("flashPctInput").value = camp.discountPct;
+    document.getElementById("flashDurationSelect").value = camp.durationType || "until_stock";
+    toggleCustomFlashDateTime();
+    if (camp.durationType === "custom" && camp.flashEnd) {
+      const dt = new Date(camp.flashEnd);
+      if (!isNaN(dt.getTime())) {
+        document.getElementById("flashCustomDateTimeInput").value = new Date(dt.getTime() - dt.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+      }
+    }
+    flashDraftIds = new Set(camp.productIds || []);
+    renderFlashChecklist();
+    showCartToast(`تم تحميل "${camp.name}"`);
+  }
+
+  function deleteFlashCampaign(campaignId) {
+    if (document.getElementById("editingCampaignId").value === campaignId) {
+      document.getElementById("editingCampaignId").value = "";
+    }
+    flashCampaigns = flashCampaigns.filter(c => c.id !== campaignId);
+    saveFlashCampaignsToStorage();
+    renderFlashCampaignsList();
+    renderJumiaFlashSection();
+    renderProducts();
+    if (adminPassword) renderAdminTable();
+  }
+
+  function renderFlashCampaignsList() {
+    const box = document.getElementById("flashCampaignsList");
+    if (!box) return;
+    if (!flashCampaigns.length) {
+      box.innerHTML = '<div style="font-size:0.8rem; color:var(--muted);">أنشئ فلاش 1، 2، 3... كل واحد مستقل بمنتجاته وحالته، وحدد «يظهر للمستخدم» على أي فلاش تريد ضمه للعميل.</div>';
+      return;
+    }
+
+    box.innerHTML = flashCampaigns.map(c => {
+      const isShown = c.showToCustomer !== false;
+      const isRunning = c.isRunning !== false;
+      const cats = [...new Set((c.productIds || []).map(id => {
+        const prod = allProducts.find(x => x.id === id);
+        return prod ? (prod.category || "").trim() : "";
+      }).filter(Boolean))];
+      const catsLabel = cats.length ? cats.join(" • ") : "بدون صنف";
+      const prodCount = (c.productIds || []).length;
+
+      return `
+        <div class="campaign-item-card ${isShown && isRunning ? "shown-to-user" : ""}">
+          <div>
+            <div>
+              <strong>${c.name}</strong>
+              <span class="campaign-status-chip ${isRunning ? "running" : "stopped"}">${isRunning ? "شغال" : "متوقف"}</span>
+              — <span style="color:var(--brand-red); font-weight:800;">خصم ${formatMoney(c.discountPct)}%</span>
+              (${prodCount} منتج | ${c.durationLabel || ""})
+            </div>
+            <div class="campaign-meta-sub">الأصناف: ${catsLabel}</div>
+          </div>
+          <div style="display:flex; gap:7px; align-items:center; flex-wrap:wrap;">
+            <label class="campaign-show-toggle">
+              <input type="checkbox" ${isShown ? "checked" : ""} onchange="toggleCampaignCustomerVisibility('${c.id}', this.checked)">
+              <span>يظهر للمستخدم</span>
+            </label>
+            <button type="button" class="btn btn-outline btn-mini" onclick="toggleCampaignRunningState('${c.id}')">${isRunning ? "إيقاف" : "تشغيل"}</button>
+            <button type="button" class="btn btn-primary btn-mini" onclick="loadCampaignIntoForm('${c.id}')">تعديل</button>
+            <button type="button" class="btn btn-danger btn-mini" onclick="deleteFlashCampaign('${c.id}')">حذف</button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function toggleFlashCatAccordion(encodedCat) {
+    const cat = decodeURIComponent(encodedCat);
+    if (expandedFlashCats.has(cat)) expandedFlashCats.delete(cat);
+    else expandedFlashCats.add(cat);
+    renderFlashChecklist();
+  }
+
+  function setAllFlashCategoriesExpanded(expand) {
+    const cats = [...new Set(allProducts.map(p => p.category || "عام"))];
+    if (expand) cats.forEach(c => expandedFlashCats.add(c));
+    else expandedFlashCats.clear();
+    renderFlashChecklist();
+  }
+
+  function renderFlashChecklist() {
+    const container = document.getElementById("flashProductsChecklist");
+    const countEl = document.getElementById("flashSelectedCount");
+    countEl.innerText = `منتجات هذا الفلاش: ${flashDraftIds.size} منتج`;
+
+    if (!allProducts.length) {
+      container.innerHTML = '<p style="margin:0; color:var(--muted); font-size:0.85rem;">لا توجد منتجات متاحة.</p>';
+      return;
+    }
+
+    const grouped = {};
+    allProducts.forEach(p => {
+      const cat = p.category || "عام";
+      if (!grouped[cat]) grouped[cat] = [];
+      grouped[cat].push(p);
+    });
+
+    const cats = Object.keys(grouped);
+    container.innerHTML = cats.map((cat, cIdx) => {
+      const items = grouped[cat];
+      const allCatSelected = items.every(p => flashDraftIds.has(p.id));
+      const isExpanded = expandedFlashCats.has(cat);
+      const encodedCat = encodeURIComponent(cat);
+
+      const rowsHtml = items.map(p => {
+        const checked = flashDraftIds.has(p.id) ? "checked" : "";
+        return `
+          <div class="flash-item-row">
+            <label class="flash-item-label">
+              <input type="checkbox" class="flash-prod-cb" value="${p.id}" data-cat="${encodedCat}" ${checked} onchange="onFlashProductCheckboxChange()">
+              <span>${p.name}</span>
+              ${p.sku ? `<code style="font-size:0.75rem; color:var(--muted);">(${p.sku})</code>` : ""}
+            </label>
+            <span style="font-size:0.78rem; color:var(--muted);">${formatMoney(p.price)} ج.م</span>
+          </div>
+        `;
+      }).join("");
+
+      return `
+        <div class="flash-cat-group" id="flashCatGroup_${cIdx}">
+          <div class="flash-cat-header">
+            <div class="flash-cat-left">
+              <button type="button" class="flash-arrow-btn" title="إظهار أو إخفاء منتجات الصنف" onclick="toggleFlashCatAccordion('${encodedCat}')">${isExpanded ? "▾" : "◂"}</button>
+              <label class="flash-item-label" style="margin:0;">
+                <input type="checkbox" data-cat-toggle="${encodedCat}" ${allCatSelected ? "checked" : ""} onchange="toggleFlashCategory('${encodedCat}', this.checked)">
+                <span>صنف: ${cat} (${items.length})</span>
+              </label>
+            </div>
+          </div>
+          <div class="flash-cat-items ${isExpanded ? "expanded" : ""}">
+            ${rowsHtml}
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function onFlashProductCheckboxChange() {
+    flashDraftIds = new Set(
+      Array.from(document.querySelectorAll(".flash-prod-cb:checked")).map(cb => cb.value)
+    );
+    document.getElementById("flashSelectedCount").innerText = `منتجات هذا الفلاش: ${flashDraftIds.size} منتج`;
+
+    document.querySelectorAll("[data-cat-toggle]").forEach(catCb => {
+      const encodedCat = catCb.getAttribute("data-cat-toggle");
+      const items = Array.from(document.querySelectorAll(`.flash-prod-cb[data-cat="${encodedCat}"]`));
+      catCb.checked = items.length > 0 && items.every(el => el.checked);
+    });
+  }
+
+  function toggleFlashCategory(encodedCat, checked) {
+    document.querySelectorAll(`.flash-prod-cb[data-cat="${encodedCat}"]`).forEach(cb => {
+      cb.checked = checked;
+    });
+    onFlashProductCheckboxChange();
+  }
+
+  function selectAllFlashProducts(checked) {
+    document.querySelectorAll(".flash-prod-cb, [data-cat-toggle]").forEach(cb => {
+      cb.checked = checked;
+    });
+    onFlashProductCheckboxChange();
+  }
+
+  // يطبّق الفلاش الحالي على منتجاته الخاصة فقط دون تغيير عدد منتجات الفلاشات الأخرى
+  async function activateFlashSale() {
+    const camp = upsertCampaignLocal(true, true);
+    if (!camp) return;
+
+    const statusEl = document.getElementById("flashAdminStatusText");
+    const btn = document.getElementById("flashActivateBtn");
+
+    btn.disabled = true;
+    statusEl.innerText = `جاري حفظ "${camp.name}" (${camp.productIds.length} منتج)...`;
+
+    try {
+      const res = await postAPI({
+        action: "batchFlashSale",
+        enabled: true,
+        productIds: camp.productIds,
+        discountPct: camp.discountPct,
+        flashEnd: encodeFlashMetaTag(camp.name, camp.flashEnd)
+      });
+      if (res.status === "success") {
+        isFlashShelfOpen = true;
+        statusEl.innerText = `تم حفظ "${camp.name}" (${camp.productIds.length} منتج) ✓`;
+        await fetchProducts();
+        showCartToast(`تم حفظ "${camp.name}" (${camp.productIds.length} منتج)`);
+      } else {
+        statusEl.innerText = res.message || "حدث خطأ أثناء الحفظ";
+        alert(res.message || "حدث خطأ أثناء الحفظ");
+      }
+    } catch (err) {
+      statusEl.innerText = "تعذر الاتصال: " + err.message;
+    } finally {
+      btn.disabled = false;
+    }
   }
 
   function setOfferFilter(val) {
@@ -1598,7 +3188,8 @@
       const info = getPriceDisplayInfo(p);
       if (onlyOffers && !info.hasOffer) return false;
       if (q) {
-        const hay = `${p.name} ${p.sku} ${p.description} ${p.category}`.toLowerCase();
+        const note = getProductExtraNote(p);
+        const hay = `${p.name} ${p.sku} ${p.description} ${p.category} ${note}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
       return true;
@@ -1648,6 +3239,16 @@
     document.getElementById("detCat").innerText = p.category || "عام";
     document.getElementById("detDesc").innerText = p.description || "لا يوجد وصف إضافي.";
 
+    const noteEl = document.getElementById("detExtraNote");
+    const extraNote = getProductExtraNote(p).trim();
+    if (extraNote) {
+      noteEl.innerText = `📌 ملاحظة: ${extraNote}`;
+      noteEl.classList.add("visible");
+    } else {
+      noteEl.innerText = "";
+      noteEl.classList.remove("visible");
+    }
+
     const imgs = p.images.length ? p.images : [PLACEHOLDER_IMG];
     const mainImgEl = document.getElementById("detMainImg");
     mainImgEl.src = imgs[0];
@@ -1664,7 +3265,6 @@
     `;
 
     document.getElementById("detAddCartBtn").onclick = function () {
-      closeModal("detailsModal");
       addToCart(p.id);
     };
 
@@ -1688,7 +3288,22 @@
     document.getElementById(id).classList.remove("open");
   }
 
-  // ================= لوحة التحكم =================
+  // ================= لوحة التحكم المنظمة =================
+  function switchAdminTab(tabName) {
+    document.getElementById("tabBtnProducts").classList.toggle("active", tabName === "products");
+    document.getElementById("tabBtnCategories").classList.toggle("active", tabName === "categories");
+    document.getElementById("tabBtnFlash").classList.toggle("active", tabName === "flash");
+
+    document.getElementById("adminTabProducts").classList.toggle("active", tabName === "products");
+    document.getElementById("adminTabCategories").classList.toggle("active", tabName === "categories");
+    document.getElementById("adminTabFlash").classList.toggle("active", tabName === "flash");
+
+    if (tabName === "flash") {
+      renderFlashChecklist();
+      renderFlashCampaignsList();
+    }
+  }
+
   async function openAdminGate() {
     if (!adminPassword) {
       const pass = prompt("أدخل كلمة مرور لوحة الإدارة:");
@@ -1706,8 +3321,22 @@
         return;
       }
     }
+    populateBulkAndAdminFilters();
     renderAdminTable();
+    renderFlashChecklist();
+    renderFlashCampaignsList();
     document.getElementById("adminModal").classList.add("open");
+  }
+
+  function markAdminDirty() {
+    adminFormDirty = true;
+  }
+
+  function attemptCloseAdmin() {
+    if (adminFormDirty || currentFormImages.length > 0) {
+      if (!confirm("هناك بيانات أو صور لم يتم حفظها في الفورم، هل تريد إغلاق نافذة الإدارة؟")) return;
+    }
+    closeModal("adminModal");
   }
 
   async function postAPI(reqBody) {
@@ -1723,12 +3352,252 @@
     return await res.json();
   }
 
+  function updateBulkCategoryBadge() {
+    const cat = document.getElementById("bulkCategorySelect").value;
+    const mode = document.getElementById("bulkModeSelect").value;
+    const pctInput = document.getElementById("bulkPctInput");
+    const badge = document.getElementById("bulkCurrentDiscountBadge");
+
+    pctInput.disabled = mode === "clear_discount";
+    if (!cat) {
+      badge.className = "current-state-pill";
+      badge.innerText = "الخصم الحالي: اختر تصنيفًا";
+      return;
+    }
+
+    const items = allProducts.filter(p => p.category === cat);
+    if (!items.length) {
+      badge.className = "current-state-pill";
+      badge.innerText = "0 منتج";
+      return;
+    }
+
+    const labels = [...new Set(items.map(p => getProductCurrentDiscountLabel(p)))];
+    if (labels.length === 1) {
+      const only = labels[0];
+      const hasDisc = only.startsWith("خصم");
+      badge.className = hasDisc ? "current-state-pill active-disc" : "current-state-pill";
+      badge.innerText = `الخصم الحالي (${items.length} صنف): ${only}`;
+    } else {
+      badge.className = "current-state-pill";
+      badge.innerText = `الخصم الحالي (${items.length} صنف): متفاوت`;
+    }
+  }
+
+  async function applyBulkCategoryDiscount() {
+    const cat = document.getElementById("bulkCategorySelect").value;
+    const mode = document.getElementById("bulkModeSelect").value;
+    const pctVal = parseDecimal(document.getElementById("bulkPctInput").value);
+    const statusEl = document.getElementById("bulkStatusText");
+    const applyBtn = document.getElementById("bulkApplyBtn");
+
+    if (!cat) {
+      alert("اختر التصنيف أولًا.");
+      return;
+    }
+
+    const targets = allProducts.filter(p => p.category === cat);
+    if (!targets.length) {
+      alert("لا توجد منتجات في هذا التصنيف.");
+      return;
+    }
+
+    let effectivePct = 0;
+    let actionLabel = "إلغاء الخصم";
+    if (mode === "discount_pct") {
+      if (isNaN(pctVal) || pctVal <= 0 || pctVal >= 100) {
+        alert("أدخل نسبة خصم صحيحة أكبر من 0 وأقل من 100.");
+        return;
+      }
+      effectivePct = pctVal;
+      actionLabel = `خصم ${formatMoney(pctVal)}%`;
+    } else if (mode === "markup_pct") {
+      if (isNaN(pctVal) || pctVal <= 0 || pctVal > 500) {
+        alert("أدخل نسبة زيادة صحيحة أكبر من 0.");
+        return;
+      }
+      effectivePct = -Math.abs(pctVal);
+      actionLabel = `زيادة ${formatMoney(Math.abs(pctVal))}%`;
+    }
+
+    if (!confirm(`تطبيق "${actionLabel}" على ${targets.length} منتج في تصنيف "${cat}"؟`)) return;
+
+    applyBtn.disabled = true;
+    let successCount = 0;
+    let failCount = 0;
+
+    for (let i = 0; i < targets.length; i++) {
+      const p = targets[i];
+      statusEl.innerText = `جاري تحديث ${i + 1} من ${targets.length}: ${p.name}...`;
+      const basePrice = parseDecimal(p.price) || 0;
+      const newDiscountPrice = mode === "clear_discount" ? "" : computeDiscountPrice(basePrice, effectivePct);
+
+      const updatedProduct = {
+        id: p.id,
+        name: p.name,
+        sku: p.sku || "",
+        category: p.category || "عام",
+        offerBadge: p.offerBadge || "",
+        price: basePrice,
+        discountPrice: newDiscountPrice,
+        description: p.description || "",
+        images: Array.isArray(p.images) ? p.images : [],
+        active: Boolean(p.active),
+        flashSale: Boolean(p.flashSale),
+        flashEnd: p.flashEnd || "",
+        discount: mode === "clear_discount" ? "" : effectivePct
+      };
+
+      try {
+        const res = await postAPI({ action: "update", product: updatedProduct });
+        if (res.status === "success") successCount++;
+        else failCount++;
+      } catch (err) {
+        failCount++;
+      }
+    }
+
+    applyBtn.disabled = false;
+    statusEl.innerText = `تم تحديث ${successCount} منتج بنجاح${failCount ? ` (فشل ${failCount})` : " ✓"}`;
+    await fetchProducts();
+  }
+
+  async function applyRenameCategory() {
+    const oldCat = document.getElementById("renameCategorySelect").value;
+    const newCat = document.getElementById("renameCategoryInput").value.trim();
+    const statusEl = document.getElementById("bulkStatusText");
+    const btn = document.getElementById("renameCatBtn");
+
+    if (!oldCat || !newCat) {
+      alert("اختر التصنيف واكتب الاسم الجديد أولًا.");
+      return;
+    }
+    if (oldCat === newCat) {
+      alert("الاسم الجديد مطابق للاسم الحالي.");
+      return;
+    }
+
+    const targets = allProducts.filter(p => p.category === oldCat);
+    if (!targets.length) return;
+
+    if (!confirm(`تغيير اسم الصنف من "${oldCat}" إلى "${newCat}" على ${targets.length} منتج؟`)) return;
+
+    btn.disabled = true;
+    let ok = 0;
+    for (let i = 0; i < targets.length; i++) {
+      const p = targets[i];
+      statusEl.innerText = `جاري تغيير اسم الصنف (${i + 1} من ${targets.length})...`;
+      try {
+        const res = await postAPI({
+          action: "update",
+          product: {
+            id: p.id,
+            name: p.name,
+            sku: p.sku || "",
+            category: newCat,
+            offerBadge: p.offerBadge || "",
+            price: parseDecimal(p.price) || 0,
+            discountPrice: p.discountPrice || "",
+            description: p.description || "",
+            images: Array.isArray(p.images) ? p.images : [],
+            active: Boolean(p.active),
+            flashSale: Boolean(p.flashSale),
+            flashEnd: p.flashEnd || "",
+            discount: p.discount || ""
+          }
+        });
+        if (res.status === "success") ok++;
+      } catch (e) {}
+    }
+    btn.disabled = false;
+    document.getElementById("renameCategoryInput").value = "";
+    statusEl.innerText = `تم تغيير اسم الصنف في ${ok} منتج إلى "${newCat}" ✓`;
+    await fetchProducts();
+  }
+
+  async function applyTagProductsInCategory() {
+    const cat = document.getElementById("renameCategorySelect").value;
+    const tagText = document.getElementById("renameCategoryInput").value.trim();
+    const statusEl = document.getElementById("bulkStatusText");
+    const btn = document.getElementById("tagItemsBtn");
+
+    if (!cat || !tagText) {
+      alert("اختر التصنيف واكتب العلامة أو الإضافة المراد إلحاقها بالأسماء.");
+      return;
+    }
+
+    const targets = allProducts.filter(p => p.category === cat);
+    if (!targets.length) return;
+
+    if (!confirm(`إضافة العلامة "${tagText}" إلى أسماء ${targets.length} منتج في صنف "${cat}"؟`)) return;
+
+    btn.disabled = true;
+    let ok = 0;
+    for (let i = 0; i < targets.length; i++) {
+      const p = targets[i];
+      const nextName = p.name.includes(tagText) ? p.name : `${p.name} ${tagText}`.trim();
+      statusEl.innerText = `جاري تحديث اسم المنتج (${i + 1} من ${targets.length})...`;
+      try {
+        const res = await postAPI({
+          action: "update",
+          product: {
+            id: p.id,
+            name: nextName,
+            sku: p.sku || "",
+            category: p.category || "عام",
+            offerBadge: p.offerBadge || "",
+            price: parseDecimal(p.price) || 0,
+            discountPrice: p.discountPrice || "",
+            description: p.description || "",
+            images: Array.isArray(p.images) ? p.images : [],
+            active: Boolean(p.active),
+            flashSale: Boolean(p.flashSale),
+            flashEnd: p.flashEnd || "",
+            discount: p.discount || ""
+          }
+        });
+        if (res.status === "success") ok++;
+      } catch (e) {}
+    }
+    btn.disabled = false;
+    statusEl.innerText = `تم تحديث أسماء ${ok} منتج في "${cat}" ✓`;
+    await fetchProducts();
+  }
+
+  function applyBulkCategoryNote() {
+    const cat = document.getElementById("bulkNoteCategorySelect").value;
+    const noteText = document.getElementById("bulkNoteInput").value.trim();
+    const statusEl = document.getElementById("bulkStatusText");
+
+    if (!cat) {
+      alert("اختر التصنيف أولًا.");
+      return;
+    }
+
+    const items = allProducts.filter(p => p.category === cat);
+    if (!items.length) {
+      alert("لا توجد منتجات في هذا التصنيف.");
+      return;
+    }
+
+    items.forEach(p => {
+      if (noteText) extraNotesMap[p.id] = noteText;
+      else delete extraNotesMap[p.id];
+    });
+    saveExtraNotesMap();
+    statusEl.innerText = noteText
+      ? `تم تطبيق الملاحظة على ${items.length} منتج في "${cat}" ✓`
+      : `تمت إزالة الملاحظة الإضافية عن ${items.length} منتج في "${cat}" ✓`;
+    showCartToast("تم تحديث ملاحظات التصنيف");
+  }
+
   async function handleImageUpload(e) {
     const files = Array.from(e.target.files);
     if (!files.length) return;
     const statusEl = document.getElementById("uploadStatus");
     const saveBtn = document.getElementById("saveBtn");
     saveBtn.disabled = true;
+    adminFormDirty = true;
 
     for (let i = 0; i < files.length; i++) {
       statusEl.innerText = `جاري رفع صورة ${i + 1} من ${files.length}...`;
@@ -1773,12 +3642,14 @@
 
   function makePrimaryImg(idx) {
     if (idx === 0) return;
+    adminFormDirty = true;
     const [img] = currentFormImages.splice(idx, 1);
     currentFormImages.unshift(img);
     renderFormImages();
   }
 
   function removeFormImg(idx) {
+    adminFormDirty = true;
     currentFormImages.splice(idx, 1);
     renderFormImages();
   }
@@ -1790,9 +3661,12 @@
     saveBtn.innerText = "جاري الحفظ...";
 
     const editId = document.getElementById("editId").value;
+    const existingProd = editId ? allProducts.find(x => x.id === editId) : null;
     const priceInput = parseDecimal(document.getElementById("pPrice").value);
     const pctInput = document.getElementById("pDiscountPct").value;
+    const pctNum = parseDecimal(pctInput);
     const calculatedDiscountPrice = computeDiscountPrice(priceInput, pctInput);
+    const extraNoteVal = document.getElementById("pExtraNote").value.trim();
 
     const product = {
       id: editId,
@@ -1804,7 +3678,10 @@
       discountPrice: calculatedDiscountPrice,
       description: document.getElementById("pDesc").value.trim(),
       images: currentFormImages,
-      active: document.getElementById("pActive").checked
+      active: document.getElementById("pActive").checked,
+      flashSale: existingProd ? Boolean(existingProd.flashSale) : false,
+      flashEnd: existingProd ? (existingProd.flashEnd || "") : "",
+      discount: !isNaN(pctNum) && pctNum !== 0 ? pctNum : ""
     };
 
     const res = await postAPI({
@@ -1816,8 +3693,22 @@
     saveBtn.innerText = "💾 حفظ المنتج";
 
     if (res.status === "success") {
+      const savedId = editId || (res.data && res.data.id) || (res.id) || "";
+      if (savedId) {
+        if (extraNoteVal) extraNotesMap[savedId] = extraNoteVal;
+        else delete extraNotesMap[savedId];
+        saveExtraNotesMap();
+      }
       resetForm();
       await fetchProducts();
+      if (!savedId && extraNoteVal && allProducts.length) {
+        const match = allProducts.find(x => x.name === product.name);
+        if (match) {
+          extraNotesMap[match.id] = extraNoteVal;
+          saveExtraNotesMap();
+          renderProducts();
+        }
+      }
     } else {
       alert(res.message);
     }
@@ -1826,17 +3717,23 @@
   function editProduct(id) {
     const p = allProducts.find(x => x.id === id);
     if (!p) return;
+    switchAdminTab("products");
+    document.getElementById("adminFormModeLabel").innerText = `✏️ تعديل منتج: ${p.name}`;
     document.getElementById("editId").value = p.id;
     document.getElementById("pName").value = p.name;
     document.getElementById("pSku").value = p.sku;
     document.getElementById("pCategory").value = p.category;
     document.getElementById("pBadge").value = p.offerBadge;
+    document.getElementById("pExtraNote").value = getProductExtraNote(p);
 
     const basePrice = parseDecimal(p.price) || 0;
     const discPrice = parseDecimal(p.discountPrice);
+    const sheetDiscPct = parseDecimal(p.discount);
     document.getElementById("pPrice").value = basePrice;
 
-    if (!isNaN(discPrice) && discPrice > 0 && basePrice > 0 && discPrice !== basePrice) {
+    if (!isNaN(sheetDiscPct) && sheetDiscPct !== 0) {
+      document.getElementById("pDiscountPct").value = sheetDiscPct;
+    } else if (!isNaN(discPrice) && discPrice > 0 && basePrice > 0 && discPrice !== basePrice) {
       const pct = Math.round((1 - discPrice / basePrice) * 10000) / 100;
       document.getElementById("pDiscountPct").value = pct;
     } else {
@@ -1847,6 +3744,7 @@
     document.getElementById("pDesc").value = p.description;
     document.getElementById("pActive").checked = p.active;
     currentFormImages = [...p.images];
+    adminFormDirty = false;
     renderFormImages();
     document.getElementById("adminModal").querySelector(".modal").scrollTop = 0;
   }
@@ -1855,6 +3753,10 @@
     if (!confirm("هل أنت متأكد من حذف هذا المنتج نهائياً؟")) return;
     const res = await postAPI({ action: "delete", id });
     if (res.status === "success") {
+      selectedAdminIds.delete(id);
+      flashDraftIds.delete(id);
+      delete extraNotesMap[id];
+      saveExtraNotesMap();
       await fetchProducts();
     } else {
       alert(res.message);
@@ -1864,42 +3766,147 @@
   function resetForm() {
     document.getElementById("productForm").reset();
     document.getElementById("editId").value = "";
+    document.getElementById("pExtraNote").value = "";
+    document.getElementById("adminFormModeLabel").innerText = "➕ إضافة منتج جديد";
     document.getElementById("uploadStatus").innerText = "";
     currentFormImages = [];
+    adminFormDirty = false;
     renderFormImages();
     updateDiscountPreview();
   }
 
-  function renderAdminTable() {
+  function getFilteredAdminProducts() {
     const searchEl = document.getElementById("adminSearchInput");
+    const catEl = document.getElementById("adminCategoryFilter");
+    const statusEl = document.getElementById("adminStatusFilter");
+
     const q = searchEl ? searchEl.value.trim().toLowerCase() : "";
+    const cat = catEl ? catEl.value : "ALL";
+    const status = statusEl ? statusEl.value : "ALL";
 
-    const filtered = allProducts.filter(p => {
-      if (!q) return true;
-      const hay = `${p.name} ${p.sku} ${p.category} ${p.description}`.toLowerCase();
-      return hay.includes(q);
+    return allProducts.filter(p => {
+      if (cat !== "ALL" && p.category !== cat) return false;
+      const info = getPriceDisplayInfo(p);
+      if (status === "ACTIVE" && !p.active) return false;
+      if (status === "HIDDEN" && p.active) return false;
+      if (status === "OFFERS" && !info.hasOffer) return false;
+      if (q) {
+        const note = getProductExtraNote(p);
+        const hay = `${p.name} ${p.sku} ${p.category} ${p.description} ${note}`.toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
     });
+  }
 
-    document.getElementById("adminCount").innerText = q ? `${filtered.length} / ${allProducts.length}` : allProducts.length;
+  function toggleAdminSelect(id, checked) {
+    if (checked) selectedAdminIds.add(id);
+    else selectedAdminIds.delete(id);
+    updateAdminSelectionBar();
+  }
+
+  function toggleSelectAllAdmin(checked) {
+    const visible = getFilteredAdminProducts();
+    visible.forEach(p => {
+      if (checked) selectedAdminIds.add(p.id);
+      else selectedAdminIds.delete(p.id);
+    });
+    renderAdminTable();
+  }
+
+  function updateAdminSelectionBar() {
+    document.getElementById("adminSelectedCount").innerText = `المحدد: ${selectedAdminIds.size} منتج`;
+  }
+
+  async function batchSetActive(targetActive) {
+    const ids = [...selectedAdminIds];
+    if (!ids.length) {
+      alert("حدد منتجًا واحدًا على الأقل أولًا.");
+      return;
+    }
+    if (!confirm(`${targetActive ? "إظهار" : "إخفاء"} ${ids.length} منتج محدد؟`)) return;
+
+    for (const id of ids) {
+      const p = allProducts.find(x => x.id === id);
+      if (!p) continue;
+      await postAPI({
+        action: "update",
+        product: {
+          id: p.id,
+          name: p.name,
+          sku: p.sku || "",
+          category: p.category || "عام",
+          offerBadge: p.offerBadge || "",
+          price: parseDecimal(p.price) || 0,
+          discountPrice: p.discountPrice || "",
+          description: p.description || "",
+          images: Array.isArray(p.images) ? p.images : [],
+          active: targetActive,
+          flashSale: Boolean(p.flashSale),
+          flashEnd: p.flashEnd || "",
+          discount: p.discount || ""
+        }
+      });
+    }
+    await fetchProducts();
+  }
+
+  async function batchDeleteSelected() {
+    const ids = [...selectedAdminIds];
+    if (!ids.length) {
+      alert("حدد منتجًا واحدًا على الأقل أولًا.");
+      return;
+    }
+    if (!confirm(`حذف ${ids.length} منتج محدد نهائيًا؟`)) return;
+
+    for (const id of ids) {
+      await postAPI({ action: "delete", id });
+      selectedAdminIds.delete(id);
+      flashDraftIds.delete(id);
+      delete extraNotesMap[id];
+    }
+    saveExtraNotesMap();
+    await fetchProducts();
+  }
+
+  function renderAdminTable() {
+    const filtered = getFilteredAdminProducts();
+    document.getElementById("adminCount").innerText = `${filtered.length} / ${allProducts.length}`;
+    updateAdminSelectionBar();
+
+    const selectAllEl = document.getElementById("selectAllAdmin");
+    selectAllEl.checked = filtered.length > 0 && filtered.every(p => selectedAdminIds.has(p.id));
+
     const tbody = document.getElementById("adminTableBody");
-
     if (filtered.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:#64748b;">لا توجد منتجات مطابقة للبحث داخل الإدارة.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; color:#64748b;">لا توجد منتجات مطابقة للفلتر الحالي.</td></tr>';
       return;
     }
 
     tbody.innerHTML = filtered.map(p => {
       const info = getPriceDisplayInfo(p);
+      const discLabel = getProductCurrentDiscountLabel(p);
+      const thumb = p.images && p.images.length ? p.images[0] : PLACEHOLDER_IMG;
+      const checkedAttr = selectedAdminIds.has(p.id) ? "checked" : "";
+      const hasNoteIcon = getProductExtraNote(p).trim() ? ` <span title="يوجد ملاحظة إضافية للعميل">📌</span>` : "";
+      const flashTag = isProductFlashActive(p) ? ` <span style="color:var(--brand-red); font-weight:800;">⚡</span>` : "";
+
       return `
         <tr>
+          <td style="text-align:center;"><input type="checkbox" ${checkedAttr} onchange="toggleAdminSelect('${p.id}', this.checked)"></td>
+          <td style="text-align:center;"><img src="${thumb}" class="admin-thumb" alt=""></td>
           <td><code>${p.sku || "-"}</code></td>
-          <td>${p.name}</td>
+          <td><strong>${p.name}</strong>${flashTag}${hasNoteIcon}</td>
+          <td>${p.category || "عام"}</td>
           <td>${formatMoney(info.basePrice)}</td>
-          <td>${info.finalPrice !== info.basePrice ? formatMoney(info.finalPrice) : "-"}</td>
+          <td>
+            <strong>${formatMoney(info.finalPrice)}</strong>
+            <div><small style="color:${info.isDiscounted ? 'var(--brand-red)' : 'var(--muted)'}; font-weight:700;">${discLabel}</small></div>
+          </td>
           <td>${p.active ? "ظاهر" : "مخفي"}</td>
           <td style="white-space:nowrap;">
-            <button class="btn btn-outline" style="padding:4px 8px;" onclick="editProduct('${p.id}')">تعديل</button>
-            <button class="btn btn-danger" style="padding:4px 8px;" onclick="deleteProduct('${p.id}')">حذف</button>
+            <button type="button" class="btn btn-outline" style="padding:4px 8px;" onclick="editProduct('${p.id}')">تعديل</button>
+            <button type="button" class="btn btn-danger" style="padding:4px 8px;" onclick="deleteProduct('${p.id}')">حذف</button>
           </td>
         </tr>
       `;
